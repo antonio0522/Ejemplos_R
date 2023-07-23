@@ -2,7 +2,7 @@
 title: "Ejemplos_R"
 ---
 
-## Ejemplo 1
+## Ejemplo 1 (Leer archivo CSV con la libreria tidyverse)
 
 1. En este paso se coloca la librería que utilizaremos, en este caso sería tidyverse
 ```{r,message=FALSE} 
