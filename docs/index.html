@@ -140,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#ejemplo-1-leer-archivo-csv-con-la-libreria-tidyverse" id="toc-ejemplo-1-leer-archivo-csv-con-la-libreria-tidyverse" class="nav-link active" data-scroll-target="#ejemplo-1-leer-archivo-csv-con-la-libreria-tidyverse">Ejemplo 1 (Leer archivo CSV con la libreria tidyverse)</a></li>
   <li><a href="#ejemplo-2-se-utiliza-la-libreria-gapminder-para-los-datos-que-vamos-a-leer-y-se-filtra-con-filter" id="toc-ejemplo-2-se-utiliza-la-libreria-gapminder-para-los-datos-que-vamos-a-leer-y-se-filtra-con-filter" class="nav-link" data-scroll-target="#ejemplo-2-se-utiliza-la-libreria-gapminder-para-los-datos-que-vamos-a-leer-y-se-filtra-con-filter">Ejemplo 2 (Se utiliza la libreria gapminder para los datos que vamos a leer y se filtra con filter)</a></li>
-  <li><a href="#ejemplo-3" id="toc-ejemplo-3" class="nav-link" data-scroll-target="#ejemplo-3">Ejemplo 3</a></li>
+  <li><a href="#ejemplo-3-implementación-de-graficas-utilizando-libreria-ggplot2" id="toc-ejemplo-3-implementación-de-graficas-utilizando-libreria-ggplot2" class="nav-link" data-scroll-target="#ejemplo-3-implementación-de-graficas-utilizando-libreria-ggplot2">Ejemplo 3 (Implementación de graficas utilizando libreria ggplot2)</a></li>
   <li><a href="#ejemplo-4" id="toc-ejemplo-4" class="nav-link" data-scroll-target="#ejemplo-4">Ejemplo 4</a></li>
   </ul>
 </nav>
@@ -263,8 +263,37 @@ chr (1): ;Base de datos de productos;;;;;;;;
 </div>
 </div>
 </section>
-<section id="ejemplo-3" class="level2">
-<h2 class="anchored" data-anchor-id="ejemplo-3">Ejemplo 3</h2>
+<section id="ejemplo-3-implementación-de-graficas-utilizando-libreria-ggplot2" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-3-implementación-de-graficas-utilizando-libreria-ggplot2">Ejemplo 3 (Implementación de graficas utilizando libreria ggplot2)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#datos de la primera parte</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'2010'</span>, <span class="st">'2011'</span>, <span class="st">'2012'</span>, <span class="st">'2013'</span>, <span class="st">'2014'</span>, <span class="st">'2015'</span>, <span class="st">'2016'</span>, <span class="st">'2017'</span>, <span class="st">'2018'</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>produccion <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">11</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># graficando con codigo</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(<span class="at">x =</span> year, <span class="at">y =</span> produccion)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># editando la grafica</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(<span class="at">x =</span> year, <span class="at">y =</span> produccion, <span class="at">main =</span> <span class="st">'produccion'</span>, <span class="at">xlab =</span> <span class="st">''</span>, <span class="at">ylab =</span> <span class="st">''</span>, <span class="at">col =</span>  <span class="st">'cornflowerblue'</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">panel.first =</span> <span class="fu">grid</span> ())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Graficas con ggplot2</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.package(ggplot2) # para instalar ggplot2</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># hacer dataframe</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>peliculas <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(year, </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>                        produccion)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># graficar utilizando ggplot</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> peliculas, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> produccion)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'produccion'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 <section id="ejemplo-4" class="level2">
 <h2 class="anchored" data-anchor-id="ejemplo-4">Ejemplo 4</h2>
