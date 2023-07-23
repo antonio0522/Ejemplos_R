@@ -75,5 +75,12 @@
     "title": "Ejemplos_R",
     "section": "Ejemplo 3 (Implementación de graficas utilizando libreria ggplot2)",
     "text": "Ejemplo 3 (Implementación de graficas utilizando libreria ggplot2)\n\n#datos de la primera parte\nyear &lt;- c('2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018')\nproduccion &lt;- c(11, 13, 11, 8, 12, 11, 12, 8, 10)\n \n# graficando con codigo\n plot(x = year, y = produccion)\n\n\n\n# editando la grafica\n plot(x = year, y = produccion, main = 'produccion', xlab = '', ylab = '', col =  'cornflowerblue', pch = 16, panel.first = grid ())\n\n\n\n# Graficas con ggplot2\n# install.package(ggplot2) # para instalar ggplot2\nlibrary(ggplot2)\n \n# hacer dataframe\npeliculas &lt;- data.frame(year, \n                        produccion)\n \n# graficar utilizando ggplot\n ggplot(data = peliculas, mapping = aes(x = year, y = produccion)) + geom_point() + labs(title = 'produccion')"
+  },
+  {
+    "objectID": "index.html#ejemplo-4-se-utiliza-la-libreria-stringr",
+    "href": "index.html#ejemplo-4-se-utiliza-la-libreria-stringr",
+    "title": "Ejemplos_R",
+    "section": "Ejemplo 4 (Se utiliza la libreria stringr)",
+    "text": "Ejemplo 4 (Se utiliza la libreria stringr)\nEn este ejemplo se utilizara las librerias stringr que tiene la funcion de manipular cadenas: copiar, cambiar caracteres, comparar cadenas, etc.\n\nlibrary(stringr)\nlibrary(tidyverse)\n\nEn esta parte se crea un vector con distintos nombre, luego se agrupa por medio de una coma, para que al momento de la impresion quede ordemadamente y separados por coma.\n\nx &lt;- c (\"why\", \"video\", \"cross\", \"extra\", \"deal\", \"authority\")\nstr_length(x)\n\n[1] 3 5 5 5 4 9\n\nstr_c(x, collapse = \",\")\n\n[1] \"why,video,cross,extra,deal,authority\"\n\n\nAqui se realiza un filtrado de datos en la linea de caracteres que tenemos en el vector X, con la finalidad de, mostrar la primera vocal de cada palabra que encontramos en las palabras mostradas en el vector\n\nstr_extract(string = x, pattern = \"[aeiou]\")\n\n[1] NA  \"i\" \"o\" \"e\" \"e\" \"a\"\n\n\nEn este proceso se analiza los caracteres asignados en la variable palabra, donde le solicitamos mostrar los caracteres que se encuentran entre la posición 5 hasta la posición 13.\n\npalabra &lt;- \"Univesidad de Panama\"\nstr_sub(string = palabra, start = 5, end = 13)\n\n[1] \"esidad de\""
   }
 ]

@@ -63,7 +63,7 @@ peliculas <- data.frame(year,
  ggplot(data = peliculas, mapping = aes(x = year, y = produccion)) + geom_point() + labs(title = 'produccion')
 ```
 
-## Ejemplo 4
+## Ejemplo 4 (Se utiliza la libreria stringr)
 
 En este ejemplo se utilizara las librerias stringr que tiene la funcion de manipular cadenas: copiar, cambiar caracteres, comparar cadenas, etc.
 ```{r}
