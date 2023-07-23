@@ -81,6 +81,13 @@
     "href": "index.html#ejemplo-4-se-utiliza-la-libreria-stringr",
     "title": "Ejemplos_R",
     "section": "Ejemplo 4 (Se utiliza la libreria stringr)",
-    "text": "Ejemplo 4 (Se utiliza la libreria stringr)\nEn este ejemplo se utilizara las librerias stringr que tiene la funcion de manipular cadenas: copiar, cambiar caracteres, comparar cadenas, etc.\n\nlibrary(stringr)\nlibrary(tidyverse)\n\nEn esta parte se crea un vector con distintos nombre, luego se agrupa por medio de una coma, para que al momento de la impresion quede ordemadamente y separados por coma.\n\nx &lt;- c (\"why\", \"video\", \"cross\", \"extra\", \"deal\", \"authority\")\nstr_length(x)\n\n[1] 3 5 5 5 4 9\n\nstr_c(x, collapse = \",\")\n\n[1] \"why,video,cross,extra,deal,authority\"\n\n\nAqui se realiza un filtrado de datos en la linea de caracteres que tenemos en el vector X, con la finalidad de, mostrar la primera vocal de cada palabra que encontramos en las palabras mostradas en el vector\n\nstr_extract(string = x, pattern = \"[aeiou]\")\n\n[1] NA  \"i\" \"o\" \"e\" \"e\" \"a\"\n\n\nEn este proceso se analiza los caracteres asignados en la variable palabra, donde le solicitamos mostrar los caracteres que se encuentran entre la posición 5 hasta la posición 13.\n\npalabra &lt;- \"Univesidad de Panama\"\nstr_sub(string = palabra, start = 5, end = 13)\n\n[1] \"esidad de\"\n\n\n##Asignación #1"
+    "text": "Ejemplo 4 (Se utiliza la libreria stringr)\nEn este ejemplo se utilizara las librerias stringr que tiene la funcion de manipular cadenas: copiar, cambiar caracteres, comparar cadenas, etc.\n\nlibrary(stringr)\nlibrary(tidyverse)\n\nEn esta parte se crea un vector con distintos nombre, luego se agrupa por medio de una coma, para que al momento de la impresion quede ordemadamente y separados por coma.\n\nx &lt;- c (\"why\", \"video\", \"cross\", \"extra\", \"deal\", \"authority\")\nstr_length(x)\n\n[1] 3 5 5 5 4 9\n\nstr_c(x, collapse = \",\")\n\n[1] \"why,video,cross,extra,deal,authority\"\n\n\nAqui se realiza un filtrado de datos en la linea de caracteres que tenemos en el vector X, con la finalidad de, mostrar la primera vocal de cada palabra que encontramos en las palabras mostradas en el vector\n\nstr_extract(string = x, pattern = \"[aeiou]\")\n\n[1] NA  \"i\" \"o\" \"e\" \"e\" \"a\"\n\n\nEn este proceso se analiza los caracteres asignados en la variable palabra, donde le solicitamos mostrar los caracteres que se encuentran entre la posición 5 hasta la posición 13.\n\npalabra &lt;- \"Univesidad de Panama\"\nstr_sub(string = palabra, start = 5, end = 13)\n\n[1] \"esidad de\""
+  },
+  {
+    "objectID": "index.html#asignación-1",
+    "href": "index.html#asignación-1",
+    "title": "Ejemplos_R",
+    "section": "Asignación #1",
+    "text": "Asignación #1"
   }
 ]
