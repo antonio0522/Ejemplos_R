@@ -1,0 +1,38 @@
+---
+title: "Ejemplos_R"
+---
+
+## Ejemplo 1
+
+1. En este paso se coloca la librería que utilizaremos, en este caso sería tidyverse
+```{r,message=FALSE} 
+library(tidyverse)
+```
+2. luego procedemos ha crear una variable con nombre datos, la misma se le asignará el archivo
+que se leerá, en este caso sería el archivo con nombre Datos_Ejemplo, el mismo contiene un formato
+csv.
+
+Por otra parte se utiliza la función read_csv, esta función se encarga de leer un fichero de valores separados por comas (formato CSV) y lo vuelca en un dataframe, incluyéndo gran candidad de parámetros para determinar cómo se realiza la lectura y cómo deberán tratarse los datos leídos
+```{r}
+datos <- read_csv("Datos_Ejemplo.csv")
+```
+
+3. Por ultimo se imprime la información de los datos leidos 
+```{r}
+datos
+```
+
+## Ejemplo 2
+```{r}
+#Se procedio a realizar las instalaciones de los paquetes a utilizar
+#install.packages("tidyverse")
+library(gapminder)
+library(tidyverse)
+data("gapminder")
+#Se muestra una base de datos como ejemplo
+head(gapminder)
+#Se realiza filtracion de datos
+filter(gapminder, country =='Mexico')
+```
+
+
