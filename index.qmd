@@ -4,25 +4,28 @@ title: "Ejemplos_R"
 
 ## Ejemplo 1 (Leer archivo CSV con la libreria tidyverse)
 
-1. En este paso se coloca la librería que utilizaremos, en este caso sería tidyverse
-```{r,message=FALSE} 
+1.  En este paso se coloca la librería que utilizaremos, en este caso sería tidyverse
+
+```{r,message=FALSE}
 library(tidyverse)
 ```
-2. luego procedemos ha crear una variable con nombre datos, la misma se le asignará el archivo
-que se leerá, en este caso sería el archivo con nombre Datos_Ejemplo, el mismo contiene un formato
-csv.
+
+2.  luego procedemos ha crear una variable con nombre datos, la misma se le asignará el archivo que se leerá, en este caso sería el archivo con nombre Datos_Ejemplo, el mismo contiene un formato csv.
 
 Por otra parte se utiliza la función read_csv, esta función se encarga de leer un fichero de valores separados por comas (formato CSV) y lo vuelca en un dataframe, incluyéndo gran candidad de parámetros para determinar cómo se realiza la lectura y cómo deberán tratarse los datos leídos
+
 ```{r}
 datos <- read_csv("Datos_Ejemplo.csv")
 ```
 
-3. Por ultimo se imprime la información de los datos leidos 
+3.  Por ultimo se imprime la información de los datos leidos
+
 ```{r}
 datos
 ```
 
 ## Ejemplo 2 (Se utiliza la libreria gapminder para los datos que vamos a leer y se filtra con filter)
+
 ```{r}
 #Se procedio a realizar las instalaciones de los paquetes a utilizar
 #install.packages("tidyverse")
@@ -34,7 +37,6 @@ head(gapminder)
 #Se realiza filtracion de datos
 filter(gapminder, country =='Mexico')
 ```
-
 
 ## Ejemplo 3 (Implementación de graficas utilizando libreria ggplot2)
 
@@ -66,29 +68,62 @@ peliculas <- data.frame(year,
 ## Ejemplo 4 (Se utiliza la libreria stringr)
 
 En este ejemplo se utilizara las librerias stringr que tiene la funcion de manipular cadenas: copiar, cambiar caracteres, comparar cadenas, etc.
+
 ```{r}
 library(stringr)
 library(tidyverse)
 ```
 
 En esta parte se crea un vector con distintos nombre, luego se agrupa por medio de una coma, para que al momento de la impresion quede ordemadamente y separados por coma.
+
 ```{r}
 x <- c ("why", "video", "cross", "extra", "deal", "authority")
 str_length(x)
 str_c(x, collapse = ",")
 ```
 
-Aqui se realiza un filtrado de datos en la linea de caracteres que tenemos en el  vector X, con la finalidad de, mostrar la primera vocal de cada palabra que encontramos en las palabras mostradas en el vector
+Aqui se realiza un filtrado de datos en la linea de caracteres que tenemos en el vector X, con la finalidad de, mostrar la primera vocal de cada palabra que encontramos en las palabras mostradas en el vector
+
 ```{r}
 str_extract(string = x, pattern = "[aeiou]")
 ```
 
-En este proceso se analiza los caracteres asignados en la variable palabra, donde le solicitamos mostrar los caracteres que se encuentran entre la posición 5 hasta la posición 13. 
+En este proceso se analiza los caracteres asignados en la variable palabra, donde le solicitamos mostrar los caracteres que se encuentran entre la posición 5 hasta la posición 13.
+
 ```{r}
 palabra <- "Univesidad de Panama"
 str_sub(string = palabra, start = 5, end = 13)
-
-
 ```
 
 ## Asignación #1
+
+```{r}
+library(DT)
+```
+
+```{r}
+documento_csv <- read.csv("D:\\Escritorio\\Ejem_Practica_R\\Ejemplos_R\\lista-empresas.csv")
+Etiqueta_csv <-select(documento_csv, Etiqueta)
+Link_csv <-select(documento_csv, Link)
+```
+
+```{r}
+Hipervinculo <- list()
+for (indice in 1:length(Etiqueta_csv$Etiqueta)){
+  Etiqueta <- (getElement(Etiqueta_csv$Etiqueta, indice))
+  Link <- (getElement(Link_csv$Link, indice))
+  Hipervinculo <- c(Hipervinculo, paste0("<a href=",Link,">",Etiqueta,"</a>"))
+}
+```
+
+```{r}
+Direccion_url <- Hipervinculo %>% do.call(rbind,.) %>% data.frame(Paginas = .)
+```
+
+```{r}
+Filtro_final <-select(documento_csv, Industria, Derpartmento) %>% cbind(.,Direccion_url)
+```
+
+```{r}
+Filtro_final %>% datatable(escape = FALSE)
+```

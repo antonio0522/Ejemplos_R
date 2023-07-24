@@ -3,29 +3,33 @@ title: "Ejemplo_4"
 output: html_document
 date: "2023-07-23"
 ---
+
 En este ejemplo se utilizara las librerias stringr que tiene la funcion de manipular cadenas: copiar, cambiar caracteres, comparar cadenas, etc.
+
 ```{r}
 library(stringr)
 library(tidyverse)
 ```
 
 En esta parte se crea un vector con distintos nombre, luego se agrupa por medio de una coma, para que al momento de la impresion quede ordemadamente y separados por coma.
+
 ```{r}
 x <- c ("why", "video", "cross", "extra", "deal", "authority")
 str_length(x)
 str_c(x, collapse = ",")
 ```
 
-Aqui se realiza un filtrado de datos en la linea de caracteres que tenemos en el  vector X, con la finalidad de, mostrar la primera vocal de cada palabra que encontramos en las palabras mostradas en el vector
+Aqui se realiza un filtrado de datos en la linea de caracteres que tenemos en el vector X, con la finalidad de, mostrar la primera vocal de cada palabra que encontramos en las palabras mostradas en el vector
+
 ```{r}
 str_extract(string = x, pattern = "[aeiou]")
 ```
 
-En este proceso se analiza los caracteres asignados en la variable palabra, donde le solicitamos mostrar los caracteres que se encuentran entre la posición 5 hasta la posición 13. 
+En este proceso se analiza los caracteres asignados en la variable palabra, donde le solicitamos mostrar los caracteres que se encuentran entre la posición 5 hasta la posición 13.
+
 ```{r}
 palabra <- "Univesidad de Panama"
 str_sub(string = palabra, start = 5, end = 13)
 
 
 ```
-
