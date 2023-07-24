@@ -96,16 +96,21 @@ str_sub(string = palabra, start = 5, end = 13)
 ```
 
 ## Asignación #1
-
+Se coloca las librerias que utilizaremos
 ```{r}
 library(DT)
 ```
 
+En esta parte se procede seleccionar el archivo donde se tranajará.
+
+Luego de seleccionar y leer el archivo con nombre lista-empresa.csv, se procede ha selecionar la tabla etiqueta y Link con la función selec que serán donde se trabajará los datos.
 ```{r}
 documento_csv <- read.csv("D:\\Escritorio\\Ejem_Practica_R\\Ejemplos_R\\lista-empresas.csv")
 Etiqueta_csv <-select(documento_csv, Etiqueta)
 Link_csv <-select(documento_csv, Link)
 ```
+
+En esta parte se procede a crear una variable con nombre hipervinculo, en la misma se acumulará los link y los nombres de cada banco que aparece en Etiquetas.
 
 ```{r}
 Hipervinculo <- list()
@@ -116,14 +121,17 @@ for (indice in 1:length(Etiqueta_csv$Etiqueta)){
 }
 ```
 
+Luego de haber optenido los link y las etiquetas, se procede a transformar los resultados a data.frame.
 ```{r}
 Direccion_url <- Hipervinculo %>% do.call(rbind,.) %>% data.frame(Paginas = .)
 ```
 
+En este paso se realiza un filtro de las tablas que se desea mostrar, en este caso sería industria, departamentos y la direccion_url que contiene almacenados los hipervinculos con las direcciones web de cada banco.
 ```{r}
 Filtro_final <-select(documento_csv, Industria, Derpartmento) %>% cbind(.,Direccion_url)
 ```
 
+Por ultimo se imprime la variable que contiene todos los resultados implementados anteriormente 
 ```{r}
 Filtro_final %>% datatable(escape = FALSE)
 ```
