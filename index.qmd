@@ -142,9 +142,9 @@ Por ultimo se imprime la variable que contiene todos los resultados implementado
 Filtro_final %>% datatable(escape = FALSE)
 ```
 
-##Asignacion_2
+## Asignacion_2
 
-Librerias a Utilizar
+Librerias que vamos ha utilizar
 ```{r}
 library(DT)
 library(readxl)
