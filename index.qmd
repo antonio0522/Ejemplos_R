@@ -109,9 +109,8 @@ Luego de seleccionar y leer el archivo con nombre lista-empresa.csv, se procede 
 
 ```{r}
 documento_csv <- read.csv("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\lista-empresas.csv")
-#Etiqueta_csv <-select(documento_csv, Etiqueta)
-#Link_csv <-select(documento_csv, Link)
-documento_csv
+Etiqueta_csv <-select(documento_csv, Etiqueta)
+Link_csv <-select(documento_csv, Link)
 ```
 
 En esta parte se procede a crear una variable con nombre hipervinculo, en la misma se acumulará los link y los nombres de cada banco que aparece en Etiquetas.

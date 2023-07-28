@@ -5,13 +5,34 @@ date: "2023-07-28"
 ---
 
 ```{r}
-#library(DT)
-library(tidyverse)
+library(DT)
+library(readxl)
 ```
 
 ```{r}
-documento2_csv <- read.csv("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\Datos_ejemplo_2.csv", stringsAsFactors = TRUE )
-#Area_csv <-select(documento2_csv, Area)
-#Link_csv <-select(documento2_csv, Link)
-documento2_csv
+documento <- read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\Datos_ejemplo_2.xlsx")
+Categoria_xlsx <- select(documento, Category)
+Link_xlsx <- select(documento, Link)
+```
+
+```{r}
+Hipervinculo <- list()
+for (indice in 1:length(Categoria_xlsx$Category)){
+  Category <- (getElement(Categoria_xlsx$Category, indice))
+  Link <- (getElement(Link_xlsx$Link, indice))
+  Hipervinculo <- c(Hipervinculo, paste0("<a href=",Link,">",Category,"</a>"))
+  Hipervinculo
+}
+```
+
+```{r}
+Direccion_url <- Hipervinculo %>% do.call(rbind,.) %>% data.frame(Paginas = .)
+```
+
+```{r}
+Filtro_final <-select(documento, Area) %>% cbind(.,Direccion_url)
+```
+
+```{r}
+Filtro_final %>% datatable(escape = FALSE)
 ```
