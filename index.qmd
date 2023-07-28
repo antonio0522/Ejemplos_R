@@ -95,7 +95,7 @@ palabra <- "Univesidad de Panama"
 str_sub(string = palabra, start = 5, end = 13)
 ```
 
-## Asignación #1
+## Asignación 1
 
 Se coloca las librerias que utilizaremos
 
@@ -142,7 +142,7 @@ Por ultimo se imprime la variable que contiene todos los resultados implementado
 Filtro_final %>% datatable(escape = FALSE)
 ```
 
-## Asignacion_2
+## Asignacion 2
 
 Librerias que vamos ha utilizar
 ```{r}
