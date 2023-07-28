@@ -145,12 +145,14 @@ Filtro_final %>% datatable(escape = FALSE)
 ## Asignacion 2
 
 Librerias que vamos ha utilizar
+
 ```{r}
 library(DT)
 library(readxl)
 ```
 
 Se ubica el archivo que vamos a leer en formato xlsx, y se sub-divide las columnas que vamos a trabajar
+
 ```{r}
 documento <- read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\Datos_ejemplo_2.xlsx")
 Categoria_xlsx <- select(documento, Category)
@@ -158,6 +160,7 @@ Link_xlsx <- select(documento, Link)
 ```
 
 Se realiza la operacion de implementar el hipervinculo, utilizando el link de las paginas y las categorias asignadas
+
 ```{r}
 Hipervinculo <- list()
 for (indice in 1:length(Categoria_xlsx$Category)){
@@ -169,16 +172,19 @@ for (indice in 1:length(Categoria_xlsx$Category)){
 ```
 
 Se determina los link que vamos a utilizar
+
 ```{r}
 Direccion_url <- Hipervinculo %>% do.call(rbind,.) %>% data.frame(Paginas = .)
 ```
 
 Se procede a seleccionar la tabla que vamos a imprimir, en este caso la de Area y imprimimos los resultados optenidos en la variable Direccion_url
+
 ```{r}
 Filtro_final <-select(documento, Area) %>% cbind(.,Direccion_url)
 ```
 
 En este ultimo paso se imprime los resultados en formato datatable
+
 ```{r}
 Filtro_final %>% datatable(escape = FALSE)
 ```

@@ -1,0 +1,15 @@
+---
+title: "Asignacion_3"
+---
+
+```{r}
+library(DT)
+library(stringr)
+```
+
+```{r}
+documento <- read.csv("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\DatosPeronales.csv")
+Nombre_csv <-select(documento, Nombre)
+Nombre_csv
+```
+  
