@@ -1,23 +1,23 @@
-Ôªø;Base de datos de productos;;;;;;;;
+;Base de datos de productos;;;;;;;;
 ;;;;;;;;;
-IdProducto;NombreProducto;Proveedor;Categor√≠a;CantidadPorUnidad;PrecioUnidad;UnidadesEnExistencia;UnidadesEnPedido;NivelNuevoPedido;Suspendido
-1;T√© Dharamsala;Exotic Liquids;Bebidas;10 cajas x 20 bolsas;18.00 ‚Ç¨;39;0;10;FALSO
-2;Cerveza tibetana Barley;Exotic Liquids;Bebidas;24 - bot. 12 l;19.00 ‚Ç¨;17;40;25;FALSO
-3;Sirope de regaliz;Exotic Liquids;Condimentos;12 - bot. 550 ml;10.00 ‚Ç¨;13;70;25;FALSO
-4;Especias Cajun del chef Anton;New Orleans Cajun Delights;Condimentos;48 - frascos 6 l;22.00 ‚Ç¨;53;0;0;FALSO
-5;Mezcla Gumbo del chef Anton;New Orleans Cajun Delights;Condimentos;36 cajas;21.35 ‚Ç¨;0;0;0;VERDADERO
-6;Mermelada de grosellas de la abuela;Grandma Kelly's Homestead;Condimentos;12 - frascos 8 l;25.00 ‚Ç¨;120;0;25;FALSO
-7;Peras secas org√°nicas del t√≠o Bob;Grandma Kelly's Homestead;Frutas/Verduras;12 - paq. 1 kg;30.00 ‚Ç¨;15;0;10;FALSO
-8;Salsa de ar√°ndanos Northwoods;Grandma Kelly's Homestead;Condimentos;12 - frascos 12 l;40.00 ‚Ç¨;6;0;0;FALSO
-9;Buey Mishi Kobe;Tokyo Traders;Carnes;18 - paq. 500 g;97.00 ‚Ç¨;29;0;0;VERDADERO
-10;Pez espada;Tokyo Traders;Pescado/Marisco;12 - frascos 200 ml;31.00 ‚Ç¨;31;0;0;FALSO
-11;Queso Cabrales;Cooperativa de Quesos 'Las Cabras';L√°cteos;paq. 1 kg;21.00 ‚Ç¨;22;30;30;FALSO
-12;Queso Manchego La Pastora;Cooperativa de Quesos 'Las Cabras';L√°cteos;10 - paq. 500 g;38.00 ‚Ç¨;86;0;0;FALSO
-13;Algas Konbu;Mayumi's;Pescado/Marisco;caja 2 kg;6.00 ‚Ç¨;24;0;5;FALSO
-14;Cuajada de jud√≠as;Mayumi's;Frutas/Verduras;40 - paq. 100 g;23.25 ‚Ç¨;35;0;0;FALSO
-15;Salsa de soja baja en sodio;Mayumi's;Condimentos;24 - bot. 250 ml;15.50 ‚Ç¨;39;0;5;FALSO
-16;Postre de merengue Pavlova;Pavlova, Ltd.;Reposter√≠a;32 - cajas 500 g;17.45 ‚Ç¨;29;0;10;FALSO
-17;Cordero Alice Springs;Pavlova, Ltd.;Carnes;20 - latas 1 kg;39.00 ‚Ç¨;0;0;0;VERDADERO
-18;Langostinos tigre Carnarvon;Pavlova, Ltd.;Pescado/Marisco;paq. 16 kg;62.50 ‚Ç¨;42;0;0;FALSO
-19;Pastas de t√© de chocolate;Specialty Biscuits, Ltd.;Reposter√≠a;10 cajas x 12 piezas;9.20 ‚Ç¨;25;0;5;FALSO
-20;Mermelada de Sir Rodney's;Specialty Biscuits, Ltd.;Reposter√≠a;30 cajas regalo;81.00 ‚Ç¨;40;0;0;FALSO
+IdProducto;NombreProducto;Proveedor;CategorÌa;CantidadPorUnidad;PrecioUnidad;UnidadesEnExistencia;UnidadesEnPedido;NivelNuevoPedido;Suspendido
+1;TÈ Dharamsala;Exotic Liquids;Bebidas;10 cajas x 20 bolsas;18.00 Ä;39;0;10;FALSO
+2;Cerveza tibetana Barley;Exotic Liquids;Bebidas;24 - bot. 12 l;19.00 Ä;17;40;25;FALSO
+3;Sirope de regaliz;Exotic Liquids;Condimentos;12 - bot. 550 ml;10.00 Ä;13;70;25;FALSO
+4;Especias Cajun del chef Anton;New Orleans Cajun Delights;Condimentos;48 - frascos 6 l;22.00 Ä;53;0;0;FALSO
+5;Mezcla Gumbo del chef Anton;New Orleans Cajun Delights;Condimentos;36 cajas;21.35 Ä;0;0;0;VERDADERO
+6;Mermelada de grosellas de la abuela;Grandma Kelly's Homestead;Condimentos;12 - frascos 8 l;25.00 Ä;120;0;25;FALSO
+7;Peras secas org·nicas del tÌo Bob;Grandma Kelly's Homestead;Frutas/Verduras;12 - paq. 1 kg;30.00 Ä;15;0;10;FALSO
+8;Salsa de ar·ndanos Northwoods;Grandma Kelly's Homestead;Condimentos;12 - frascos 12 l;40.00 Ä;6;0;0;FALSO
+9;Buey Mishi Kobe;Tokyo Traders;Carnes;18 - paq. 500 g;97.00 Ä;29;0;0;VERDADERO
+10;Pez espada;Tokyo Traders;Pescado/Marisco;12 - frascos 200 ml;31.00 Ä;31;0;0;FALSO
+11;Queso Cabrales;Cooperativa de Quesos 'Las Cabras';L·cteos;paq. 1 kg;21.00 Ä;22;30;30;FALSO
+12;Queso Manchego La Pastora;Cooperativa de Quesos 'Las Cabras';L·cteos;10 - paq. 500 g;38.00 Ä;86;0;0;FALSO
+13;Algas Konbu;Mayumi's;Pescado/Marisco;caja 2 kg;6.00 Ä;24;0;5;FALSO
+14;Cuajada de judÌas;Mayumi's;Frutas/Verduras;40 - paq. 100 g;23.25 Ä;35;0;0;FALSO
+15;Salsa de soja baja en sodio;Mayumi's;Condimentos;24 - bot. 250 ml;15.50 Ä;39;0;5;FALSO
+16;Postre de merengue Pavlova;Pavlova, Ltd.;ReposterÌa;32 - cajas 500 g;17.45 Ä;29;0;10;FALSO
+17;Cordero Alice Springs;Pavlova, Ltd.;Carnes;20 - latas 1 kg;39.00 Ä;0;0;0;VERDADERO
+18;Langostinos tigre Carnarvon;Pavlova, Ltd.;Pescado/Marisco;paq. 16 kg;62.50 Ä;42;0;0;FALSO
+19;Pastas de tÈ de chocolate;Specialty Biscuits, Ltd.;ReposterÌa;10 cajas x 12 piezas;9.20 Ä;25;0;5;FALSO
+20;Mermelada de Sir Rodney's;Specialty Biscuits, Ltd.;ReposterÌa;30 cajas regalo;81.00 Ä;40;0;0;FALSO

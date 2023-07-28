@@ -1,0 +1,17 @@
+---
+title: "Asignacion_2"
+output: html_document
+date: "2023-07-28"
+---
+
+```{r}
+library(DT)
+library(tidyverse)
+```
+
+```{r}
+documento2_csv <- read.csv("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\Datos_ejemplo_2.csv", stringsAsFactors = TRUE )
+#Area_csv <-select(documento2_csv, Area)
+#Link_csv <-select(documento2_csv, Link)
+#documento2_csv
+```
