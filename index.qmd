@@ -2,22 +2,8 @@
 title: "Trabajos realizados Practica profesional"
 ---
 
-## [Semana 1](Ejemplo_1.qmd)
+## [Semana 1](Ejemplo_1.qmd, Ejemplo_2.qmd)
 
-
-### Ejemplo 2 (Se utiliza la libreria gapminder para los datos que vamos a leer y se filtra con filter)
-
-```{r}
-#Se procedio a realizar las instalaciones de los paquetes a utilizar
-#install.packages("tidyverse")
-library(gapminder)
-library(tidyverse)
-data("gapminder")
-#Se muestra una base de datos como ejemplo
-head(gapminder)
-#Se realiza filtracion de datos
-filter(gapminder, country =='Mexico')
-```
 
 ### Ejemplo 3 (Implementación de graficas utilizando libreria ggplot2)
 
