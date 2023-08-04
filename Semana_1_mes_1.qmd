@@ -26,9 +26,7 @@ datos <- read_csv("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\Datos_Eje
 datos
 ```
 
-
 ### Ejemplo 2 (Se utiliza la libreria gapminder para los datos que vamos a leer y se filtra con filter)
-
 
 ```{r}
 #Se procedio a realizar las instalaciones de los paquetes a utilizar
@@ -41,7 +39,6 @@ head(gapminder)
 #Se realiza filtracion de datos
 filter(gapminder, country =='Mexico')
 ```
-
 
 ### Ejemplo 3 (Implementación de graficas utilizando libreria ggplot2)
 
@@ -197,16 +194,19 @@ Filtro_final %>% datatable(escape = FALSE)
 ### Asignacion 3
 
 Se plantea la libretia que se utilizará
+
 ```{r}
 library(stringr)
 ```
 
 Se selecciona el archivo que se ejecutara
+
 ```{r}
 documento_original <- read.csv("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\DatosPeronales.csv")
 ```
-  
+
 En este paso se selecciona el archivo que se ejecutara, se procede a seleciconar las columnas que se dividirán y se restructura la tabla en 4 columnas, que seria nombre, edad, provincia y distrito
+
 ```{r}
 documento_dividido <- (documento_original %>% separate(Nombre, into = c("Nombre", "Edad"), sep = "[/-]") %>% separate(Dirección, into = c("Provincia", "Distrito"), sep = "-"))
 documento_dividido
