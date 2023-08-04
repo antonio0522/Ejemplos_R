@@ -1,0 +1,256 @@
+---
+title: "Tranajos realizados Practica profesional"
+---
+
+
+## Ejemplo 1 (Leer archivo CSV con la libreria tidyverse)
+
+1.  En este paso se coloca la librería que utilizaremos, en este caso sería tidyverse
+
+
+```{r,message=FALSE}
+library(tidyverse)
+```
+
+
+2.  luego procedemos ha crear una variable con nombre datos, la misma se le asignará el archivo que se leerá, en este caso sería el archivo con nombre Datos_Ejemplo, el mismo contiene un formato csv.
+
+Por otra parte se utiliza la función read_csv, esta función se encarga de leer un fichero de valores separados por comas (formato CSV) y lo vuelca en un dataframe, incluyéndo gran candidad de parámetros para determinar cómo se realiza la lectura y cómo deberán tratarse los datos leídos
+
+
+```{r}
+datos <- read_csv("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\Datos_Ejemplo.csv")
+```
+
+
+3.  Por ultimo se imprime la información de los datos leidos
+
+
+```{r}
+datos
+```
+
+
+## Ejemplo 2 (Se utiliza la libreria gapminder para los datos que vamos a leer y se filtra con filter)
+
+
+```{r}
+#Se procedio a realizar las instalaciones de los paquetes a utilizar
+#install.packages("tidyverse")
+library(gapminder)
+library(tidyverse)
+data("gapminder")
+#Se muestra una base de datos como ejemplo
+head(gapminder)
+#Se realiza filtracion de datos
+filter(gapminder, country =='Mexico')
+```
+
+
+## Ejemplo 3 (Implementación de graficas utilizando libreria ggplot2)
+
+
+```{r}
+#datos de la primera parte
+year <- c('2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018')
+produccion <- c(11, 13, 11, 8, 12, 11, 12, 8, 10)
+ 
+# graficando con codigo
+ plot(x = year, y = produccion)
+ 
+ 
+# editando la grafica
+ plot(x = year, y = produccion, main = 'produccion', xlab = '', ylab = '', col =  'cornflowerblue', pch = 16, panel.first = grid ())
+ 
+ 
+# Graficas con ggplot2
+# install.package(ggplot2) # para instalar ggplot2
+library(ggplot2)
+ 
+# hacer dataframe
+peliculas <- data.frame(year, 
+                        produccion)
+ 
+# graficar utilizando ggplot
+ ggplot(data = peliculas, mapping = aes(x = year, y = produccion)) + geom_point() + labs(title = 'produccion')
+```
+
+
+## Ejemplo 4 (Se utiliza la libreria stringr)
+
+En este ejemplo se utilizara las librerias stringr que tiene la funcion de manipular cadenas: copiar, cambiar caracteres, comparar cadenas, etc.
+
+
+```{r}
+library(stringr)
+library(tidyverse)
+```
+
+
+En esta parte se crea un vector con distintos nombre, luego se agrupa por medio de una coma, para que al momento de la impresion quede ordemadamente y separados por coma.
+
+
+```{r}
+x <- c ("why", "video", "cross", "extra", "deal", "authority")
+str_length(x)
+str_c(x, collapse = ",")
+```
+
+
+Aqui se realiza un filtrado de datos en la linea de caracteres que tenemos en el vector X, con la finalidad de, mostrar la primera vocal de cada palabra que encontramos en las palabras mostradas en el vector
+
+
+```{r}
+str_extract(string = x, pattern = "[aeiou]")
+```
+
+
+En este proceso se analiza los caracteres asignados en la variable palabra, donde le solicitamos mostrar los caracteres que se encuentran entre la posición 5 hasta la posición 13.
+
+
+```{r}
+palabra <- "Univesidad de Panama"
+str_sub(string = palabra, start = 5, end = 13)
+```
+
+
+## Asignación 1
+
+Se coloca las librerias que utilizaremos
+
+
+```{r}
+library(DT)
+```
+
+
+En esta parte se procede seleccionar el archivo donde se tranajará.
+
+Luego de seleccionar y leer el archivo con nombre lista-empresa.csv, se procede ha selecionar la tabla etiqueta y Link con la función selec que serán donde se trabajará los datos.
+
+
+```{r}
+documento_csv <- read.csv("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\lista-empresas.csv")
+Etiqueta_csv <-select(documento_csv, Etiqueta)
+Link_csv <-select(documento_csv, Link)
+```
+
+
+En esta parte se procede a crear una variable con nombre hipervinculo, en la misma se acumulará los link y los nombres de cada banco que aparece en Etiquetas.
+
+
+```{r}
+Hipervinculo <- list()
+for (indice in 1:length(Etiqueta_csv$Etiqueta)){
+  Etiqueta <- (getElement(Etiqueta_csv$Etiqueta, indice))
+  Link <- (getElement(Link_csv$Link, indice))
+  Hipervinculo <- c(Hipervinculo, paste0("<a href=",Link,">",Etiqueta,"</a>"))
+}
+```
+
+
+Luego de haber optenido los link y las etiquetas, se procede a transformar los resultados a data.frame.
+
+
+```{r}
+Direccion_url <- Hipervinculo %>% do.call(rbind,.) %>% data.frame(Paginas = .)
+```
+
+
+En este paso se realiza un filtro de las tablas que se desea mostrar, en este caso sería industria, departamentos y la direccion_url que contiene almacenados los hipervinculos con las direcciones web de cada banco.
+
+
+```{r}
+Filtro_final <-select(documento_csv, Industria, Derpartmento) %>% cbind(.,Direccion_url)
+```
+
+
+Por ultimo se imprime la variable que contiene todos los resultados implementados anteriormente
+
+
+```{r}
+Filtro_final %>% datatable(escape = FALSE)
+```
+
+
+## Asignacion 2
+
+Librerias que vamos ha utilizar
+
+
+```{r}
+library(DT)
+library(readxl)
+```
+
+
+Se ubica el archivo que vamos a leer en formato xlsx, y se sub-divide las columnas que vamos a trabajar
+
+
+```{r}
+documento <- read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\Datos_ejemplo_2.xlsx")
+Categoria_xlsx <- select(documento, Category)
+Link_xlsx <- select(documento, Link)
+```
+
+
+Se realiza la operacion de implementar el hipervinculo, utilizando el link de las paginas y las categorias asignadas
+
+
+```{r}
+Hipervinculo <- list()
+for (indice in 1:length(Categoria_xlsx$Category)){
+  Category <- (getElement(Categoria_xlsx$Category, indice))
+  Link <- (getElement(Link_xlsx$Link, indice))
+  Hipervinculo <- c(Hipervinculo, paste0("<a href=",Link,">",Category,"</a>"))
+  Hipervinculo
+}
+```
+
+
+Se determina los link que vamos a utilizar
+
+
+```{r}
+Direccion_url <- Hipervinculo %>% do.call(rbind,.) %>% data.frame(Paginas = .)
+```
+
+
+Se procede a seleccionar la tabla que vamos a imprimir, en este caso la de Area y imprimimos los resultados optenidos en la variable Direccion_url
+
+
+```{r}
+Filtro_final <-select(documento, Area) %>% cbind(.,Direccion_url)
+```
+
+
+En este ultimo paso se imprime los resultados en formato datatable
+
+
+```{r}
+Filtro_final %>% datatable(escape = FALSE)
+```
+
+
+## Asignacion 3
+
+Se plantea la libretia que se utilizará
+
+```{r}
+library(stringr)
+```
+
+
+Se selecciona el archivo que se ejecutara
+
+```{r}
+documento_original <- read.csv("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\DatosPeronales.csv")
+```
+
+  
+En este paso se selecciona el archivo que se ejecutara, se procede a seleciconar las columnas que se dividirán y se restructura la tabla en 4 columnas, que seria nombre, edad, provincia y distrito
+
+```{r}
+documento_dividido <- (documento_original %>% separate(Nombre, into = c("Nombre", "Edad"), sep = "[/-]") %>% separate(Dirección, into = c("Provincia", "Distrito"), sep = "-"))
+documento_dividido
+```

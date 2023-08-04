@@ -1,5 +1,5 @@
 ---
-title: "Ejemplos_R"
+title: "Tranajos realizados Practica profesional"
 ---
 
 ## Ejemplo 1 (Leer archivo CSV con la libreria tidyverse)
