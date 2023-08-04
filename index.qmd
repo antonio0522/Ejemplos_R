@@ -1,5 +1,5 @@
 ---
-title: "Tranajos realizados Practica profesional"
+title: "Trabajos realizados Practica profesional"
 ---
 
 ## Ejemplo 1 (Leer archivo CSV con la libreria tidyverse)
