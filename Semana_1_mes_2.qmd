@@ -33,10 +33,16 @@ table(species$Species)
 
 ### Asignación 1 (Convertir PDf a XLXS)
 
+Estas serian las librerias a utilizar.
+
 ```{r}
 library(DT)
 library(readxl)
 ```
+
+Luego de convertir el archivo PDF a xlsx se procede a leer el archivo y imprimirlo en un datatable.
+
+Debo mencionar que para convertir el documento utilicé un convertidor online llamado Adobe.
 
 ```{r,message=FALSE}
 datatable(Archivo_Excel<-read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\datos_energia.xlsx")) 
