@@ -1,5 +1,5 @@
 ---
-title: "Trabajos realizados Practica profesional"
+title: "Trabajos realizados Practica profesional (Antonio Ramos)" 
 ---
 
 ## [Mes 1](Mes_1.qmd)
