@@ -209,5 +209,5 @@ En este paso se selecciona el archivo que se ejecutara, se procede a seleciconar
 
 ```{r}
 documento_dividido <- (documento_original %>% separate(Nombre, into = c("Nombre", "Edad"), sep = "[/-]") %>% separate(Dirección, into = c("Provincia", "Distrito"), sep = "-"))
-documento_dividido
+datatable(documento_dividido)
 ```
