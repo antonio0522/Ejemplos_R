@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ejemplos_R -</title>
+<title>Ejemplos_R - Semana 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -101,15 +135,132 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#ejemplo-1-leer-archivo-csv-con-la-libreria-tidyverse" id="toc-ejemplo-1-leer-archivo-csv-con-la-libreria-tidyverse" class="nav-link active" data-scroll-target="#ejemplo-1-leer-archivo-csv-con-la-libreria-tidyverse">Ejemplo 1 (Leer archivo CSV con la libreria tidyverse)</a></li>
+  <li><a href="#ejemplo-2-se-utiliza-la-libreria-gapminder-para-los-datos-que-vamos-a-leer-y-se-filtra-con-filter" id="toc-ejemplo-2-se-utiliza-la-libreria-gapminder-para-los-datos-que-vamos-a-leer-y-se-filtra-con-filter" class="nav-link" data-scroll-target="#ejemplo-2-se-utiliza-la-libreria-gapminder-para-los-datos-que-vamos-a-leer-y-se-filtra-con-filter">Ejemplo 2 (Se utiliza la libreria gapminder para los datos que vamos a leer y se filtra con filter)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Semana 1</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="ejemplo-1-leer-archivo-csv-con-la-libreria-tidyverse" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-1-leer-archivo-csv-con-la-libreria-tidyverse">Ejemplo 1 (Leer archivo CSV con la libreria tidyverse)</h3>
+<ol type="1">
+<li>En este paso se coloca la librería que utilizaremos, en este caso sería tidyverse</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>luego procedemos ha crear una variable con nombre datos, la misma se le asignará el archivo que se leerá, en este caso sería el archivo con nombre Datos_Ejemplo, el mismo contiene un formato csv.</li>
+</ol>
+<p>Por otra parte se utiliza la función read_csv, esta función se encarga de leer un fichero de valores separados por comas (formato CSV) y lo vuelca en un dataframe, incluyéndo gran candidad de parámetros para determinar cómo se realiza la lectura y cómo deberán tratarse los datos leídos</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">anton</span><span class="sc">\\</span><span class="st">OneDrive</span><span class="sc">\\</span><span class="st">Documentos</span><span class="sc">\\</span><span class="st">Ejemplos_R</span><span class="sc">\\</span><span class="st">Datos_Ejemplo.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: One or more parsing issues, call `problems()` on your data frame for details,
+e.g.:
+  dat &lt;- vroom(...)
+  problems(dat)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 22 Columns: 1
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): ;Base de datos de productos;;;;;;;;
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Por ultimo se imprime la información de los datos leidos</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>datos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 22 × 1
+   `;Base de datos de productos;;;;;;;;`                                        
+   &lt;chr&gt;                                                                        
+ 1 ";;;;;;;;;"                                                                  
+ 2 "IdProducto;NombreProducto;Proveedor;Categor\xeda;CantidadPorUnidad;PrecioUn…
+ 3 "1;T\xe9 Dharamsala;Exotic Liquids;Bebidas;10 cajas x 20 bolsas;18.00 \x80;3…
+ 4 "2;Cerveza tibetana Barley;Exotic Liquids;Bebidas;24 - bot. 12 l;19.00 \x80;…
+ 5 "3;Sirope de regaliz;Exotic Liquids;Condimentos;12 - bot. 550 ml;10.00 \x80;…
+ 6 "4;Especias Cajun del chef Anton;New Orleans Cajun Delights;Condimentos;48 -…
+ 7 "5;Mezcla Gumbo del chef Anton;New Orleans Cajun Delights;Condimentos;36 caj…
+ 8 "6;Mermelada de grosellas de la abuela;Grandma Kelly's Homestead;Condimentos…
+ 9 "7;Peras secas org\xe1nicas del t\xedo Bob;Grandma Kelly's Homestead;Frutas/…
+10 "8;Salsa de ar\xe1ndanos Northwoods;Grandma Kelly's Homestead;Condimentos;12…
+# ℹ 12 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="ejemplo-2-se-utiliza-la-libreria-gapminder-para-los-datos-que-vamos-a-leer-y-se-filtra-con-filter" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-2-se-utiliza-la-libreria-gapminder-para-los-datos-que-vamos-a-leer-y-se-filtra-con-filter">Ejemplo 2 (Se utiliza la libreria gapminder para los datos que vamos a leer y se filtra con filter)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Se procedio a realizar las instalaciones de los paquetes a utilizar</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidyverse")</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"gapminder"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Se muestra una base de datos como ejemplo</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(gapminder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+  country     continent  year lifeExp      pop gdpPercap
+  &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+1 Afghanistan Asia       1952    28.8  8425333      779.
+2 Afghanistan Asia       1957    30.3  9240934      821.
+3 Afghanistan Asia       1962    32.0 10267083      853.
+4 Afghanistan Asia       1967    34.0 11537966      836.
+5 Afghanistan Asia       1972    36.1 13079460      740.
+6 Afghanistan Asia       1977    38.4 14880372      786.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Se realiza filtracion de datos</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(gapminder, country <span class="sc">==</span><span class="st">'Mexico'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 6
+   country continent  year lifeExp       pop gdpPercap
+   &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt;     &lt;dbl&gt;
+ 1 Mexico  Americas   1952    50.8  30144317     3478.
+ 2 Mexico  Americas   1957    55.2  35015548     4132.
+ 3 Mexico  Americas   1962    58.3  41121485     4582.
+ 4 Mexico  Americas   1967    60.1  47995559     5755.
+ 5 Mexico  Americas   1972    62.4  55984294     6809.
+ 6 Mexico  Americas   1977    65.0  63759976     7675.
+ 7 Mexico  Americas   1982    67.4  71640904     9611.
+ 8 Mexico  Americas   1987    69.5  80122492     8688.
+ 9 Mexico  Americas   1992    71.5  88111030     9472.
+10 Mexico  Americas   1997    73.7  95895146     9767.
+11 Mexico  Americas   2002    74.9 102479927    10742.
+12 Mexico  Americas   2007    76.2 108700891    11978.</code></pre>
+</div>
+</div>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
