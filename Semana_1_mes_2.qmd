@@ -30,7 +30,7 @@ species <- iris %>%
 table(species$Species)
 ```
 
-### Asignación 1 (Convertir PDf a XLXS)
+### Asignación 1 (Convertir PDf a XLSX)
 
 Estas serian las librerias a utilizar.
 
