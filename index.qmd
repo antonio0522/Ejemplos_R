@@ -2,29 +2,10 @@
 title: "Trabajos realizados Practica profesional"
 ---
 
-### Ejemplo 1 (Leer archivo CSV con la libreria tidyverse)
+## [Semana 1] (Ejemplo_1.qmd)
 
-1.  En este paso se coloca la librería que utilizaremos, en este caso sería tidyverse
 
-```{r,message=FALSE}
-library(tidyverse)
-```
-
-2.  luego procedemos ha crear una variable con nombre datos, la misma se le asignará el archivo que se leerá, en este caso sería el archivo con nombre Datos_Ejemplo, el mismo contiene un formato csv.
-
-Por otra parte se utiliza la función read_csv, esta función se encarga de leer un fichero de valores separados por comas (formato CSV) y lo vuelca en un dataframe, incluyéndo gran candidad de parámetros para determinar cómo se realiza la lectura y cómo deberán tratarse los datos leídos
-
-```{r}
-datos <- read_csv("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\Datos_Ejemplo.csv")
-```
-
-3.  Por ultimo se imprime la información de los datos leidos
-
-```{r}
-datos
-```
-
-## Ejemplo 2 (Se utiliza la libreria gapminder para los datos que vamos a leer y se filtra con filter)
+### Ejemplo 2 (Se utiliza la libreria gapminder para los datos que vamos a leer y se filtra con filter)
 
 ```{r}
 #Se procedio a realizar las instalaciones de los paquetes a utilizar
@@ -38,7 +19,7 @@ head(gapminder)
 filter(gapminder, country =='Mexico')
 ```
 
-## Ejemplo 3 (Implementación de graficas utilizando libreria ggplot2)
+### Ejemplo 3 (Implementación de graficas utilizando libreria ggplot2)
 
 ```{r}
 #datos de la primera parte
@@ -65,7 +46,7 @@ peliculas <- data.frame(year,
  ggplot(data = peliculas, mapping = aes(x = year, y = produccion)) + geom_point() + labs(title = 'produccion')
 ```
 
-## Ejemplo 4 (Se utiliza la libreria stringr)
+### Ejemplo 4 (Se utiliza la libreria stringr)
 
 En este ejemplo se utilizara las librerias stringr que tiene la funcion de manipular cadenas: copiar, cambiar caracteres, comparar cadenas, etc.
 
@@ -95,7 +76,7 @@ palabra <- "Univesidad de Panama"
 str_sub(string = palabra, start = 5, end = 13)
 ```
 
-## Asignación 1
+### Asignación 1
 
 Se coloca las librerias que utilizaremos
 
@@ -142,7 +123,7 @@ Por ultimo se imprime la variable que contiene todos los resultados implementado
 Filtro_final %>% datatable(escape = FALSE)
 ```
 
-## Asignacion 2
+### Asignacion 2
 
 Librerias que vamos ha utilizar
 
@@ -189,7 +170,7 @@ En este ultimo paso se imprime los resultados en formato datatable
 Filtro_final %>% datatable(escape = FALSE)
 ```
 
-## Asignacion 3
+### Asignacion 3
 
 Se plantea la libretia que se utilizará
 ```{r}
