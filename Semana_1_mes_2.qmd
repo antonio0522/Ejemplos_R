@@ -50,7 +50,7 @@ curve(y, xlim = c(-15,15), col = "red", lty = 2, xaxp = c(-15,15,6), yaxp = c(0,
 
 En este ejemplo se procede a utilizar las siguientes librerias
 
-```{r}
+```{r, message=FALSE}
 library(lubridate)
 library(tidyverse)
 ```
