@@ -30,7 +30,7 @@ species <- iris %>%
 table(species$Species)
 ```
 
-### Ejemplo 2(Implementacion de ejemplos graficos)
+### Ejemplo 2 (Implementacion de ejemplos graficos)
 
 Se procede a dibujar el gráfico de la función y=x^2−3x+30 entre −15 y 15. De título, poner “Una parábola”. De etiquetas, en el eje 0X, en formato matemático, “x”; y en el eje 0Y, introducir y=x2−3x+30
 , también en formato matemático.Se utiliza la función curve()
@@ -44,6 +44,30 @@ plot(y, xlim = c(-15,15), main = "UNA PARÁBOLA", xlab = expression(x), ylab = e
 ```{r}
 curve(y, xlim = c(-15,15), col = "red", lty = 2, xaxp = c(-15,15,6), yaxp = c(0,300,30), main = "UNA PARÁBOLA")
 ```
+
+
+### Ejemplo 3 (Libreria lubridate)
+
+En este ejemplo se procede a utilizar las siguientes librerias
+
+```{r}
+library(lubridate)
+library(tidyverse)
+```
+
+En este paso se procede ha asignar una fecha a cada variable.
+
+```{r}
+date1 <- as_date("2018-04-16")
+date2 <- as_date("2018-05-16")
+```
+
+Luego de asignar las fechas estipuladas, se procede a contar la cantidad de dias que hay entre una fecha y la otra automaticamente
+
+```{r}
+date2-date1
+```
+
 
 
 ### Asignación 1 (Convertir PDf a XLSX)
