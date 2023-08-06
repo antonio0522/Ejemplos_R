@@ -30,8 +30,20 @@ species <- iris %>%
 table(species$Species)
 ```
 
-### Ejemplo 2(Convertir PDf a XLSX)
+### Ejemplo 2(Implementacion de ejemplos graficos)
 
+Se procede a dibujar el gráfico de la función y=x^2−3x+30 entre −15 y 15. De título, poner “Una parábola”. De etiquetas, en el eje 0X, en formato matemático, “x”; y en el eje 0Y, introducir y=x2−3x+30
+, también en formato matemático.Se utiliza la función curve()
+
+```{r}
+y<-function(x){x^2-3*x+30}
+plot(y, xlim = c(-15,15), main = "UNA PARÁBOLA", xlab = expression(x), ylab = expression(x^2-3*x+30), col = "blue")
+```
+
+
+```{r}
+curve(y, xlim = c(-15,15), col = "red", lty = 2, xaxp = c(-15,15,6), yaxp = c(0,300,30), main = "UNA PARÁBOLA")
+```
 
 
 ### Asignación 1 (Convertir PDf a XLSX)
@@ -47,6 +59,6 @@ Luego de convertir el archivo PDF a xlsx se procede a leer el archivo y imprimir
 
 Debo mencionar que para convertir el documento utilicé un convertidor online llamado Adobe.
 
-```{r,message=FALSE}
-datatable(Archivo_Excel_Nuevo<-read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\datos_energia.xlsx")) 
+```{r}
+datatable(Archivo_Excel_Nuevo<-read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\datos_energia.xlsx"))
 ```
