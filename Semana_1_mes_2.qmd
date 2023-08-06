@@ -30,6 +30,33 @@ species <- iris %>%
 table(species$Species)
 ```
 
+### Ejemplo 2(Convertir PDf a XLSX)
+
+```{r}
+library(tidyverse)
+library(lubridate)
+```
+
+```{r}
+as_datetime(3600)
+as_data(10)
+
+date1 <- "2000-02-05"
+date2 <- "2023-08-04"
+
+class(date1)
+
+date2- date1
+
+
+year(date1)
+#month(date1)
+#day(date1)
+```
+
+
+
+
 ### Asignación 1 (Convertir PDf a XLSX)
 
 Estas serian las librerias a utilizar.
