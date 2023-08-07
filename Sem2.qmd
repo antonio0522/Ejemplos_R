@@ -1,4 +1,4 @@
- ---
+---
 title: "Semana 2"
 format: html
 editor: visual
