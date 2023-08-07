@@ -4,7 +4,7 @@ format: html
 editor: visual
 ---
 
-### Asignacion 2 (Limpieza de datos)
+### Asignacion 1 (Limpieza de datos)
 
 Estas serian las librerias a utilizar.
 
@@ -13,6 +13,11 @@ library(DT)
 library(readxl)
 ```
 
+Se procede a cargar el archivo de la semana anterior
+
+```{r}
+datatable(Archivo_Excel_Nuevo<-read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\datos_energia.xlsx"))
+```
 
 En este paso se selecciona los espacios que estan vacios en la celda, que serian 5 por cada celda, como lo vemos a continuacion.
 
