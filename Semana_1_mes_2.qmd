@@ -68,8 +68,6 @@ Luego de asignar las fechas estipuladas, se procede a contar la cantidad de dias
 date2-date1
 ```
 
-
-
 ### Asignación 1 (Convertir PDf a XLSX)
 
 Estas serian las librerias a utilizar.
@@ -86,20 +84,3 @@ Debo mencionar que para convertir el documento utilicé un convertidor online ll
 ```{r}
 datatable(Archivo_Excel_Nuevo<-read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\datos_energia.xlsx"))
 ```
-
-### Asignacion 2 (Limpieza de datos)
-
-A continuacion se procede a filtrar los datos que contienen espacios de celdad en blanco o en NA, como observaremos a continuacion, contienen un total de 5 celdad en blanco por columna.
-
-```{r}
-sapply(Archivo_Excel_Nuevo, function(x) sum(is.na(x)))
-```
-
-Luego de obtener los espacios de las celdas vacias e cada columna, se procede a la eliminacion de la misma, como podemos observas a continuacion.
-
-```{r}
-eliminacion_Celda_vacia <- na.omit(Archivo_Excel_Nuevo)
-head(eliminacion_Celda_vacia, n=78)
-datatable(eliminacion_Celda_vacia)
-```
-
