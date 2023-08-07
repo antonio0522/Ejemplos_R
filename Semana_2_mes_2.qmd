@@ -1,4 +1,4 @@
- ---
+---
 title: "Semana 2"
 format: html
 editor: visual
@@ -13,7 +13,8 @@ library(DT)
 library(readxl)
 ```
 
-A continuacion se procede a filtrar los datos que contienen espacios de celdad en blanco o en NA, como observaremos a continuacion, contienen un total de 5 celdad en blanco por columna.
+
+En este paso se selecciona los espacios que estan vacios en la celda, que serian 5 por cada celda, como lo vemos a continuacion.
 
 ```{r}
 sapply(Archivo_Excel_Nuevo, function(x) sum(is.na(x)))
@@ -23,6 +24,6 @@ Luego de obtener los espacios de las celdas vacias e cada columna, se procede a 
 
 ```{r, message=FALSE}
 eliminacion_Celda_vacia <- na.omit(Archivo_Excel_Nuevo)
-head(eliminacion_Celda_vacia, n=78)
+
 datatable(eliminacion_Celda_vacia)
 ```
