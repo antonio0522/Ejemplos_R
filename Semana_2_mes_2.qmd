@@ -13,13 +13,15 @@ library(DT)
 library(readxl)
 ```
 
-Se procede a cargar el archivo de la semana anterior
+Se procede ha cargar el archivo de la semana anterior
 
 ```{r}
 datatable(Archivo_Excel_Nuevo<-read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\datos_energia.xlsx"))
 ```
 
-En este paso se selecciona los espacios que estan vacios en la celda, que serian 5 por cada celda, como lo vemos a continuacion.
+### Elimiacion de celdas vacias
+
+En este paso seleccionamos los espacios que estan vacios en las columnas, que serian 5 por cada celda, como lo vemos ha continuacion.
 
 ```{r}
 sapply(Archivo_Excel_Nuevo, function(x) sum(is.na(x)))
@@ -32,3 +34,5 @@ eliminacion_Celda_vacia <- na.omit(Archivo_Excel_Nuevo)
 
 datatable(eliminacion_Celda_vacia)
 ```
+
+### Conteo de las categorias (Tipos)
