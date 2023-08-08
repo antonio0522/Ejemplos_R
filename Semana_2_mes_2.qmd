@@ -4,27 +4,7 @@ format: html
 editor: visual
 ---
 
-### Ejemplo 1(Matrices sencillas)
-
-La función matrix genera una matriz en RStudio o R base, pasando como input un vector numérico, de caracteres o lógico.
-
-La función ncol() devuelve el número de columnas de una matriz. La función nrow() devuelve el número de filas de una matriz.
-
-```{r}
-matriz_A<-matrix(c(1,2,3,2,4,6,3,6,9,4,8,12),nrow = 4, ncol=3, byrow = T )
-datatable(matriz_A)
-```
-
-### Ejemplo 2 (Introducir la matriz identidad de tamaño 4x4 en RStudio (sin usar un vector de 16 valores))
-
-La función diag() en lenguaje R se usa para construir una matriz diagonal.
-
-```{r}
-datatable(diag(4))
-```
-
-
-### Asignacion 1 (Limpieza de datos)
+### Asignacion 1 (Limpieza de datoszs)
 
 Estas serian las librerias a utilizar.
 
