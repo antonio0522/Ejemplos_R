@@ -5,4 +5,5 @@ editor: visual
 ---
 
 ## [Semana 1](Semana_1_mes_2.qmd)
+
 ## [Semana 2](Semana_2_mes_2.qmd)
