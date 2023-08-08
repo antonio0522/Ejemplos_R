@@ -54,18 +54,4 @@ eliminacion_Celda_vacia <- na.omit(Archivo_Excel_Nuevo)
 datatable(eliminacion_Celda_vacia)
 ```
 
-```{r}
-library(stringr)
-```
-
 ### Eliminacion de guiones y números de la columna ID-PLANTA
-```{r}
-# enlaza el conjunto de datos con un pipe a la función clean_names(), y el resultado lo guarda como "linelist"  
- <- linelist_raw %>% 
-  janitor::clean_names()
-
-# ver los nombres de las columnas
-names(linelist)
-```
-
-
