@@ -31,8 +31,11 @@ Luego de obtener los espacios de las celdas vacias e cada columna, se procede a 
 
 ```{r, message=FALSE}
 eliminacion_Celda_vacia <- na.omit(Archivo_Excel_Nuevo)
-
 datatable(eliminacion_Celda_vacia)
 ```
 
-### Conteo de las categorias (Tipos)
+### Eliminacion de guiones y números de la columna ID-PLANTA
+
+
+
+
