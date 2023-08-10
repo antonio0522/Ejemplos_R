@@ -4,8 +4,6 @@ format: html
 editor: visual
 ---
 
-## Verga
-
 ### Ejemplo 1(Matrices sencillas)
 
 ```{r}
@@ -46,28 +44,25 @@ Matriz transformada ha la transpuesta
 datatable(t(matri_A))
 ```
 
-### Ejemplo 4 (Función table.freq())
+### Ejemplo 4 (Muestra aleatoria extraída CON REPOSICIÓN de la población P)
 
-
-Nueva libreria ha utilizar
-
-```{r}
-library(agricolae)
-```
-
-En esta parte se crea una variable cuantitativa discreta, donde se le asigna el nombre de edad.
+En este ejemplo se crea una variable de tipo cuatitativa contínua, que lleva el nombre de P
+Luego se extrae 5 valores de la variable P, pero de manera aleatoria
 
 ```{r}
-edad<-c(11,12,12,15,12,41)
-tab_Edad <- hist(edad, plot=FALSE)
-tab_Edad2=table.freq(tab_Edad)
+P=c(1,2,3,4,5,6,7,8,9,10)
+muestra=sample(P,5,rep=T)
 ```
 
-En este paso se imprime los resultados obtenidos
+Se imprime los resultados
 
 ```{r}
-datatable(tab_Edad2)
+data.frame(muestra)
 ```
+
+
+
+
 
 ### Ejemplo 5 (Graficos circulares o de sectores)
 
