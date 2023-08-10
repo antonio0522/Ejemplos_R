@@ -28,6 +28,59 @@ La función diag() en lenguaje R se usa para construir una matriz diagonal.
 datatable(diag(4))
 ```
 
+### Ejemplo 3 (Transformación de matriz original a transpuesta)
+
+La función matrix genera una matriz en RStudio o R base, pasando como input un vector numérico, de caracteres o lógico.
+
+La función ncol() devuelve el número de columnas de una matriz. La función nrow() devuelve el número de filas de una matriz.
+
+```{r}
+matri_A<-matrix(c(1,2,3,4,5,6,7,8,9),nrow = 3, ncol=3, byrow = T )
+datatable(matri_A)
+```
+
+Matriz transformada ha la transpuesta
+
+```{r}
+datatable(t(matri_A))
+```
+
+### Ejemplo 4 (Función table.freq())
+
+
+Nueva libreria ha utilizar
+
+```{r}
+library(agricolae)
+```
+
+En esta parte se crea una variable cuantitativa discreta, donde se le asigna el nombre de edad.
+
+```{r}
+edad<-c(11,12,12,15,12,41)
+tab_Edad <- hist(edad, plot=FALSE)
+tab_Edad2=table.freq(tab_Edad)
+```
+
+En este paso se imprime los resultados obtenidos
+
+```{r}
+datatable(tab_Edad2)
+```
+
+### Ejemplo 5 (Graficos circulares o de sectores)
+
+Se procede a crear una variable cuantitativa continua con el nombre de sexo, donde se guardará la siguiente información
+
+```{r}
+sexo=as.factor(c("Hombre","Mujer","Mujer","Hombre","Mujer","Mujer"))
+```
+
+En este paso se realiza un conteo de la cantidad de hombres y mujeres, para luego determinar cual contiene mas mayoria de sexo
+
+```{r}
+pie(table(sexo),labels = c("Hombres","Mujeres"), main="Sexos",edges = 200)
+```
 
 ### Asignacion 1 (Limpieza de datos)
 
