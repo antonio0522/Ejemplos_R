@@ -46,8 +46,7 @@ datatable(t(matri_A))
 
 ### Ejemplo 4 (Muestra aleatoria extraída CON REPOSICIÓN de la población P)
 
-En este ejemplo se crea una variable de tipo cuatitativa contínua, que lleva el nombre de P
-Luego se extrae 5 valores de la variable P, pero de manera aleatoria
+En este ejemplo se crea una variable de tipo cuatitativa contínua, que lleva el nombre de P Luego se extrae 5 valores de la variable P, pero de manera aleatoria
 
 ```{r}
 P=c(1,2,3,4,5,6,7,8,9,10)
@@ -59,10 +58,6 @@ Se imprime los resultados
 ```{r}
 data.frame(muestra)
 ```
-
-
-
-
 
 ### Ejemplo 5 (Graficos circulares o de sectores)
 
@@ -78,6 +73,28 @@ En este paso se realiza un conteo de la cantidad de hombres y mujeres, para lueg
 pie(table(sexo),labels = c("Hombres","Mujeres"), main="Sexos",edges = 200)
 ```
 
+### Ejemplo 6 (Usando la función table.freq())
+
+Se utilizará nueva libreria
+
+```{r}
+library("agricolae")
+```
+
+Se crea una variable cuantitativa discreta, la que tiene nombre de edad, 
+```{r}
+edad<-c(11,12,12,15,12,41)
+tab_Edad <- hist(edad, plot=FALSE)
+tab_Edad2=table.freq(tab_Edad)
+```
+
+Se imprime resultado
+
+```{r}
+datatable(tab_Edad2)
+```
+
+
 ### Asignacion 1 (Limpieza de datos)
 
 Estas serian las librerias a utilizar.
@@ -92,8 +109,8 @@ Se procede ha cargar el archivo de la semana anterior
 ```{r}
 datatable(Archivo_Excel_Nuevo<-read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\datos_energia.xlsx"))
 ```
-
-### Elimiacion de celdas vacias
+<br>
+**Elimiacion de celdas vacias**
 
 En este paso seleccionamos los espacios que estan vacios en las columnas, que serian 5 por cada celda, como lo vemos ha continuacion.
 
@@ -107,5 +124,88 @@ Luego de obtener los espacios de las celdas vacias e cada columna, se procede a 
 eliminacion_Celda_vacia <- na.omit(Archivo_Excel_Nuevo)
 datatable(eliminacion_Celda_vacia)
 ```
+<br>
+**Eliminacion de guiones y números de la columna ID-PLANTA**
 
-### Eliminacion de guiones y números de la columna ID-PLANTA
+Se selecciona la columna que se eliminaran los caracteres
+
+```{r}
+modificar_column <- "ID-PLANTA"
+eliminacion_Celda_vacia[[modificar_column]] <- gsub("\\d|-", "", eliminacion_Celda_vacia[[modificar_column]])
+```
+<br>
+**Se imprime los resultados**
+
+```{r}
+datatable(eliminacion_Celda_vacia)
+```
+<br>
+**Valores en 0**
+
+Se filta los resultados obtenidos por cada columna con valor en 0
+
+```{r}
+columnas_cero <- which(apply(eliminacion_Celda_vacia == 0, 1, any))
+data.frame(columnas_cero)
+```
+<br>
+**En este paso se transforma los títulos de las columnas a minusculas**
+
+```{r}
+colnames(eliminacion_Celda_vacia) <- tolower(colnames(eliminacion_Celda_vacia))
+datatable (eliminacion_Celda_vacia)
+```
+<br>
+**Letras iniciales en Mayusculas**
+
+Se utiliza nueva libria
+
+```{r, message=FALSE}
+library(R.utils)
+```
+
+Se selecciona las columas que se aplicara las MAYUSCULAS al inicio de cada palabra
+
+```{r}
+Columna_1 <- "tipo"
+Columna_2 <- "id-planta"
+```
+
+Se transforma las palabras iniciales en MAYUSCULAS en cada celda de las columnas seleccionadas
+
+```{r}
+eliminacion_Celda_vacia[[Columna_1]]<- tolower(eliminacion_Celda_vacia[[Columna_1]])
+eliminacion_Celda_vacia[[Columna_1]]<- capitalize(eliminacion_Celda_vacia[[Columna_1]])
+
+eliminacion_Celda_vacia[[Columna_2]]<- tolower(eliminacion_Celda_vacia[[Columna_2]])
+eliminacion_Celda_vacia[[Columna_2]]<- capitalize(eliminacion_Celda_vacia[[Columna_2]])
+```
+
+Se imprime el resultado
+
+```{r}
+datatable(eliminacion_Celda_vacia)
+```
+<br>
+**Variables que son numéricas**
+
+En este paso se hace el llamado a todas las tablas, donde se seleccionan las tablas que contienen valores numéricos
+
+```{r}
+colum_numericas <- sapply(eliminacion_Celda_vacia, function(col)all(is.numeric(col)))
+```
+
+Se selecciona las columnas obtenidas en el paso anterior y se muestran las celdas de cada columna
+
+```{r}
+val_numericos <- eliminacion_Celda_vacia[, colum_numericas]
+datatable(val_numericos)
+```
+<br>
+**Se eliminan las columnas con porcentaje**
+
+```{r}
+eliminacion_Celda_vacia <- eliminacion_Celda_vacia[, !colnames(eliminacion_Celda_vacia) %in% "%gb"]
+eliminacion_Celda_vacia <- eliminacion_Celda_vacia[, !colnames(eliminacion_Celda_vacia) %in% "%ci"]
+datatable(eliminacion_Celda_vacia)
+```

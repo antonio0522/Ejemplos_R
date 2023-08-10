@@ -1,12 +1,12 @@
- ---
+---
 title: "Semana 1"
-format: html
-editor: visual
+format: html     
+editor: visual   
 ---
 
 ## Ejemplo 1 (Creación y utilización de variable)
 
-En est ejemplo se utilizara la libreria dplyr que empleará  filter.
+En est ejemplo se utilizara la libreria dplyr que empleará filter.
 
 ```{r,message=FALSE}
 library(dplyr)
@@ -32,19 +32,16 @@ table(species$Species)
 
 ### Ejemplo 2 (Implementacion de ejemplos graficos)
 
-Se procede a dibujar el gráfico de la función y=x^2−3x+30 entre −15 y 15. De título, poner “Una parábola”. De etiquetas, en el eje 0X, en formato matemático, “x”; y en el eje 0Y, introducir y=x2−3x+30
-, también en formato matemático.Se utiliza la función curve()
+Se procede a dibujar el gráfico de la función y=x\^2−3x+30 entre −15 y 15. De título, poner "Una parábola". De etiquetas, en el eje 0X, en formato matemático, "x"; y en el eje 0Y, introducir y=x2−3x+30 , también en formato matemático.Se utiliza la función curve()
 
 ```{r}
 y<-function(x){x^2-3*x+30}
 plot(y, xlim = c(-15,15), main = "UNA PARÁBOLA", xlab = expression(x), ylab = expression(x^2-3*x+30), col = "blue")
 ```
 
-
 ```{r}
 curve(y, xlim = c(-15,15), col = "red", lty = 2, xaxp = c(-15,15,6), yaxp = c(0,300,30), main = "UNA PARÁBOLA")
 ```
-
 
 ### Ejemplo 3 (Libreria lubridate)
 
