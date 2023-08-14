@@ -4,6 +4,74 @@ format: html
 editor: visual
 ---
 
-```{r}
+### Asignacion 1 (Manipular dataframes y hacer operaciones)
 
+```{r, message=FALSE}
+library(DT)
+library(readxl)
+library(dplyr)
+library(tibble)
+library(purrr)
+```
+
+Se ubican los archivos que vamos ha trabajar
+
+```{r}
+datatable(Plantas_datos<-read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\datos_asignacion_2_data_1.xlsx"))
+
+datatable(Tipo_energia<-read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\datos_asignacion_2_data_2.xlsx"))
+```
+Operacoines realizadas utilizando la columna A
+
+```{r}
+columna_A <- select(Tipo_energia, A)
+`Fila 1` <- rep(columna_A[1,1] %>% as.numeric)
+`Fila 2` <- rep(columna_A[2,1] %>% as.numeric)
+`Fila 3` <- rep(columna_A[3,1] %>% as.numeric)
+nueva_tabla <- Plantas_datos %>% add_column(., `Fila 1`,.after = "instalada") %>% add_column(., `Fila 2`,.after = "generacion") %>% add_column(., `Fila 3`,.after = "firme")
+datatable(nueva_tabla)
+```
+
+```{r}
+ `multi columna 1`<-(nueva_tabla[1,2] * nueva_tabla[1,3]) + (nueva_tabla[1,4] * nueva_tabla[1,5]) + (nueva_tabla[1,6] * nueva_tabla[1,7])
+ `multi columna 2`<-(nueva_tabla[2,2] * nueva_tabla[2,3]) + (nueva_tabla[2,4] * nueva_tabla[2,5]) + (nueva_tabla[2,6] * nueva_tabla[2,7])
+  `multi columna 3`<-(nueva_tabla[3,2] * nueva_tabla[3,3]) + (nueva_tabla[3,4] * nueva_tabla[3,5]) + (nueva_tabla[3,6] * nueva_tabla[3,7])
+  mult_tabl <- rbind(`multi columna 1` , `multi columna 2` , `multi columna 3`)
+  colnames(mult_tabl) <- "Valores"
+  datatable(mult_tabl)
+```
+
+Resultado final obtenios para la columna A
+
+```{r}
+resultado_final <- nueva_tabla %>% add_column(., mult_tabl,.after = "planta")
+datatable(resultado_final)
+```
+
+Operacoines realizadas utilizando la columna B
+
+```{r}
+columna_B <- select(Tipo_energia, B)
+columna_B
+`Fila 1B` <- rep(columna_B[1,1] %>% as.numeric)
+`Fila 2B` <- rep(columna_B[2,1] %>% as.numeric)
+`Fila 3B` <- rep(columna_B[3,1] %>% as.numeric)
+nueva_tabla2 <- Plantas_datos %>% add_column(., `Fila 1B`,.after = "instalada") %>% add_column(., `Fila 2B`,.after = "generacion") %>% add_column(., `Fila 3B`,.after = "firme")
+datatable(nueva_tabla2)
+```
+
+```{r}
+ `multi columna 1B`<-(nueva_tabla2[1,2] * nueva_tabla2[1,3]) + (nueva_tabla2[1,4] * nueva_tabla2[1,5]) + (nueva_tabla2[1,6] * nueva_tabla2[1,7])
+ `multi columna 2B`<-(nueva_tabla2[2,2] * nueva_tabla2[2,3]) + (nueva_tabla2[2,4] * nueva_tabla2[2,5]) + (nueva_tabla2[2,6] * nueva_tabla2[2,7])
+  `multi columna 3B`<-(nueva_tabla2[3,2] * nueva_tabla2[3,3]) + (nueva_tabla2[3,4] * nueva_tabla2[3,5]) + (nueva_tabla2[3,6] * nueva_tabla2[3,7])
+  mult_tabl_B <- rbind(`multi columna 1B` , `multi columna 2B` , `multi columna 3B`)
+  colnames(mult_tabl_B) <- "Valores"
+  datatable(mult_tabl_B)
+```
+
+Resultado final obtenios para la columna B
+
+```{r}
+resultado_final_B <- nueva_tabla2 %>% add_column(., mult_tabl_B,.after = "planta")
+datatable(resultado_final_B)
 ```

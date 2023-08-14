@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -59,6 +93,16 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+
+<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.28/datatables.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -101,7 +145,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#asignacion-1-manipular-dataframes-y-hacer-operaciones" id="toc-asignacion-1-manipular-dataframes-y-hacer-operaciones" class="nav-link active" data-scroll-target="#asignacion-1-manipular-dataframes-y-hacer-operaciones">Asignacion 1 (Manipular dataframes y hacer operaciones)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -123,8 +173,116 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="asignacion-1-manipular-dataframes-y-hacer-operaciones" class="level3">
+<h3 class="anchored" data-anchor-id="asignacion-1-manipular-dataframes-y-hacer-operaciones">Asignacion 1 (Manipular dataframes y hacer operaciones)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Se ubican los archivos que vamos ha trabajar</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(Plantas_datos<span class="ot">&lt;-</span><span class="fu">read_xlsx</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">anton</span><span class="sc">\\</span><span class="st">OneDrive</span><span class="sc">\\</span><span class="st">Documentos</span><span class="sc">\\</span><span class="st">Ejemplos_R</span><span class="sc">\\</span><span class="st">datos_asignacion_2_data_1.xlsx"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d1ac6d70c0914c12610d" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d1ac6d70c0914c12610d">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["AES Panama","AES GAS","ENEL  FORTUNA"],[481.96,381,300],[1523.05,1376,1383.17],[306.55,349.89,289.49]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n      <th>instalada<\/th>\n      <th>generacion<\/th>\n      <th>firme<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(Tipo_energia<span class="ot">&lt;-</span><span class="fu">read_xlsx</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">anton</span><span class="sc">\\</span><span class="st">OneDrive</span><span class="sc">\\</span><span class="st">Documentos</span><span class="sc">\\</span><span class="st">Ejemplos_R</span><span class="sc">\\</span><span class="st">datos_asignacion_2_data_2.xlsx"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b8097c1ae1eb1749f7c9" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b8097c1ae1eb1749f7c9">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["instalada","generacion","firme"],[1,2,4],[15,20,50]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>tipo_energia<\/th>\n      <th>A<\/th>\n      <th>B<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Operacoines realizadas utilizando la columna A</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>columna_A <span class="ot">&lt;-</span> <span class="fu">select</span>(Tipo_energia, A)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">Fila 1</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(columna_A[<span class="dv">1</span>,<span class="dv">1</span>] <span class="sc">%&gt;%</span> as.numeric)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">Fila 2</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(columna_A[<span class="dv">2</span>,<span class="dv">1</span>] <span class="sc">%&gt;%</span> as.numeric)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">Fila 3</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(columna_A[<span class="dv">3</span>,<span class="dv">1</span>] <span class="sc">%&gt;%</span> as.numeric)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>nueva_tabla <span class="ot">&lt;-</span> Plantas_datos <span class="sc">%&gt;%</span> <span class="fu">add_column</span>(., <span class="st">`</span><span class="at">Fila 1</span><span class="st">`</span>,<span class="at">.after =</span> <span class="st">"instalada"</span>) <span class="sc">%&gt;%</span> <span class="fu">add_column</span>(., <span class="st">`</span><span class="at">Fila 2</span><span class="st">`</span>,<span class="at">.after =</span> <span class="st">"generacion"</span>) <span class="sc">%&gt;%</span> <span class="fu">add_column</span>(., <span class="st">`</span><span class="at">Fila 3</span><span class="st">`</span>,<span class="at">.after =</span> <span class="st">"firme"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(nueva_tabla)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-36d08a38839d1c8ddef0" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-36d08a38839d1c8ddef0">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["AES Panama","AES GAS","ENEL  FORTUNA"],[481.96,381,300],[1,1,1],[1523.05,1376,1383.17],[2,2,2],[306.55,349.89,289.49],[4,4,4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n      <th>instalada<\/th>\n      <th>Fila 1<\/th>\n      <th>generacion<\/th>\n      <th>Fila 2<\/th>\n      <th>firme<\/th>\n      <th>Fila 3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a> <span class="st">`</span><span class="at">multi columna 1</span><span class="st">`</span><span class="ot">&lt;-</span>(nueva_tabla[<span class="dv">1</span>,<span class="dv">2</span>] <span class="sc">*</span> nueva_tabla[<span class="dv">1</span>,<span class="dv">3</span>]) <span class="sc">+</span> (nueva_tabla[<span class="dv">1</span>,<span class="dv">4</span>] <span class="sc">*</span> nueva_tabla[<span class="dv">1</span>,<span class="dv">5</span>]) <span class="sc">+</span> (nueva_tabla[<span class="dv">1</span>,<span class="dv">6</span>] <span class="sc">*</span> nueva_tabla[<span class="dv">1</span>,<span class="dv">7</span>])</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> <span class="st">`</span><span class="at">multi columna 2</span><span class="st">`</span><span class="ot">&lt;-</span>(nueva_tabla[<span class="dv">2</span>,<span class="dv">2</span>] <span class="sc">*</span> nueva_tabla[<span class="dv">2</span>,<span class="dv">3</span>]) <span class="sc">+</span> (nueva_tabla[<span class="dv">2</span>,<span class="dv">4</span>] <span class="sc">*</span> nueva_tabla[<span class="dv">2</span>,<span class="dv">5</span>]) <span class="sc">+</span> (nueva_tabla[<span class="dv">2</span>,<span class="dv">6</span>] <span class="sc">*</span> nueva_tabla[<span class="dv">2</span>,<span class="dv">7</span>])</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">multi columna 3</span><span class="st">`</span><span class="ot">&lt;-</span>(nueva_tabla[<span class="dv">3</span>,<span class="dv">2</span>] <span class="sc">*</span> nueva_tabla[<span class="dv">3</span>,<span class="dv">3</span>]) <span class="sc">+</span> (nueva_tabla[<span class="dv">3</span>,<span class="dv">4</span>] <span class="sc">*</span> nueva_tabla[<span class="dv">3</span>,<span class="dv">5</span>]) <span class="sc">+</span> (nueva_tabla[<span class="dv">3</span>,<span class="dv">6</span>] <span class="sc">*</span> nueva_tabla[<span class="dv">3</span>,<span class="dv">7</span>])</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  mult_tabl <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="st">`</span><span class="at">multi columna 1</span><span class="st">`</span> , <span class="st">`</span><span class="at">multi columna 2</span><span class="st">`</span> , <span class="st">`</span><span class="at">multi columna 3</span><span class="st">`</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(mult_tabl) <span class="ot">&lt;-</span> <span class="st">"Valores"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(mult_tabl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-df7b5300b24b488b4128" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-df7b5300b24b488b4128">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],[4754.26,4532.559999999999,4224.3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Valores<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Resultado final obtenios para la columna A</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>resultado_final <span class="ot">&lt;-</span> nueva_tabla <span class="sc">%&gt;%</span> <span class="fu">add_column</span>(., mult_tabl,<span class="at">.after =</span> <span class="st">"planta"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(resultado_final)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-681031ee73590546cbef" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-681031ee73590546cbef">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["AES Panama","AES GAS","ENEL  FORTUNA"],[4754.26,4532.559999999999,4224.3],[481.96,381,300],[1,1,1],[1523.05,1376,1383.17],[2,2,2],[306.55,349.89,289.49],[4,4,4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n      <th>Valores<\/th>\n      <th>instalada<\/th>\n      <th>Fila 1<\/th>\n      <th>generacion<\/th>\n      <th>Fila 2<\/th>\n      <th>firme<\/th>\n      <th>Fila 3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Operacoines realizadas utilizando la columna B</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>columna_B <span class="ot">&lt;-</span> <span class="fu">select</span>(Tipo_energia, B)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>columna_B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 1
+      B
+  &lt;dbl&gt;
+1    15
+2    20
+3    50</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">Fila 1B</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(columna_B[<span class="dv">1</span>,<span class="dv">1</span>] <span class="sc">%&gt;%</span> as.numeric)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">Fila 2B</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(columna_B[<span class="dv">2</span>,<span class="dv">1</span>] <span class="sc">%&gt;%</span> as.numeric)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">Fila 3B</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">rep</span>(columna_B[<span class="dv">3</span>,<span class="dv">1</span>] <span class="sc">%&gt;%</span> as.numeric)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>nueva_tabla2 <span class="ot">&lt;-</span> Plantas_datos <span class="sc">%&gt;%</span> <span class="fu">add_column</span>(., <span class="st">`</span><span class="at">Fila 1B</span><span class="st">`</span>,<span class="at">.after =</span> <span class="st">"instalada"</span>) <span class="sc">%&gt;%</span> <span class="fu">add_column</span>(., <span class="st">`</span><span class="at">Fila 2B</span><span class="st">`</span>,<span class="at">.after =</span> <span class="st">"generacion"</span>) <span class="sc">%&gt;%</span> <span class="fu">add_column</span>(., <span class="st">`</span><span class="at">Fila 3B</span><span class="st">`</span>,<span class="at">.after =</span> <span class="st">"firme"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(nueva_tabla2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-5e7604d7ea60a74d797f" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-5e7604d7ea60a74d797f">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["AES Panama","AES GAS","ENEL  FORTUNA"],[481.96,381,300],[15,15,15],[1523.05,1376,1383.17],[20,20,20],[306.55,349.89,289.49],[50,50,50]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n      <th>instalada<\/th>\n      <th>Fila 1B<\/th>\n      <th>generacion<\/th>\n      <th>Fila 2B<\/th>\n      <th>firme<\/th>\n      <th>Fila 3B<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a> <span class="st">`</span><span class="at">multi columna 1B</span><span class="st">`</span><span class="ot">&lt;-</span>(nueva_tabla2[<span class="dv">1</span>,<span class="dv">2</span>] <span class="sc">*</span> nueva_tabla2[<span class="dv">1</span>,<span class="dv">3</span>]) <span class="sc">+</span> (nueva_tabla2[<span class="dv">1</span>,<span class="dv">4</span>] <span class="sc">*</span> nueva_tabla2[<span class="dv">1</span>,<span class="dv">5</span>]) <span class="sc">+</span> (nueva_tabla2[<span class="dv">1</span>,<span class="dv">6</span>] <span class="sc">*</span> nueva_tabla2[<span class="dv">1</span>,<span class="dv">7</span>])</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a> <span class="st">`</span><span class="at">multi columna 2B</span><span class="st">`</span><span class="ot">&lt;-</span>(nueva_tabla2[<span class="dv">2</span>,<span class="dv">2</span>] <span class="sc">*</span> nueva_tabla2[<span class="dv">2</span>,<span class="dv">3</span>]) <span class="sc">+</span> (nueva_tabla2[<span class="dv">2</span>,<span class="dv">4</span>] <span class="sc">*</span> nueva_tabla2[<span class="dv">2</span>,<span class="dv">5</span>]) <span class="sc">+</span> (nueva_tabla2[<span class="dv">2</span>,<span class="dv">6</span>] <span class="sc">*</span> nueva_tabla2[<span class="dv">2</span>,<span class="dv">7</span>])</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">multi columna 3B</span><span class="st">`</span><span class="ot">&lt;-</span>(nueva_tabla2[<span class="dv">3</span>,<span class="dv">2</span>] <span class="sc">*</span> nueva_tabla2[<span class="dv">3</span>,<span class="dv">3</span>]) <span class="sc">+</span> (nueva_tabla2[<span class="dv">3</span>,<span class="dv">4</span>] <span class="sc">*</span> nueva_tabla2[<span class="dv">3</span>,<span class="dv">5</span>]) <span class="sc">+</span> (nueva_tabla2[<span class="dv">3</span>,<span class="dv">6</span>] <span class="sc">*</span> nueva_tabla2[<span class="dv">3</span>,<span class="dv">7</span>])</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  mult_tabl_B <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="st">`</span><span class="at">multi columna 1B</span><span class="st">`</span> , <span class="st">`</span><span class="at">multi columna 2B</span><span class="st">`</span> , <span class="st">`</span><span class="at">multi columna 3B</span><span class="st">`</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(mult_tabl_B) <span class="ot">&lt;-</span> <span class="st">"Valores"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(mult_tabl_B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-972ffc257a63daf1117b" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-972ffc257a63daf1117b">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],[53017.9,50729.5,46637.9]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Valores<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Resultado final obtenios para la columna B</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>resultado_final_B <span class="ot">&lt;-</span> nueva_tabla2 <span class="sc">%&gt;%</span> <span class="fu">add_column</span>(., mult_tabl_B,<span class="at">.after =</span> <span class="st">"planta"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(resultado_final_B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f5ccf3f1018f20a6e445" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-f5ccf3f1018f20a6e445">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["AES Panama","AES GAS","ENEL  FORTUNA"],[53017.9,50729.5,46637.9],[481.96,381,300],[15,15,15],[1523.05,1376,1383.17],[20,20,20],[306.55,349.89,289.49],[50,50,50]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n      <th>Valores<\/th>\n      <th>instalada<\/th>\n      <th>Fila 1B<\/th>\n      <th>generacion<\/th>\n      <th>Fila 2B<\/th>\n      <th>firme<\/th>\n      <th>Fila 3B<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
