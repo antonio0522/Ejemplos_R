@@ -21,7 +21,7 @@ datatable(Plantas_datos<-read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejem
 
 datatable(Tipo_energia<-read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\datos_asignacion_2_data_2.xlsx"))
 ```
-Operacoines realizadas utilizando la columna A
+Operaciones realizadas utilizando la columna A
 
 ```{r}
 columna_A <- select(Tipo_energia, A)
@@ -48,11 +48,10 @@ resultado_final <- nueva_tabla %>% add_column(., mult_tabl,.after = "planta")
 datatable(resultado_final)
 ```
 
-Operacoines realizadas utilizando la columna B
+Operaciones realizadas utilizando la columna B
 
 ```{r}
 columna_B <- select(Tipo_energia, B)
-columna_B
 `Fila 1B` <- rep(columna_B[1,1] %>% as.numeric)
 `Fila 2B` <- rep(columna_B[2,1] %>% as.numeric)
 `Fila 3B` <- rep(columna_B[3,1] %>% as.numeric)
