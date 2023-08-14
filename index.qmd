@@ -3,13 +3,8 @@ title: "Trabajos realizados Practica profesional (Antonio Ramos)"
 ---
 
 ## [Mes 1](Mes_1.qmd)
-
 ## [Mes 2](Mes_2.qmd)
-
 ## [Mes 3](Mes_3.qmd)
-
 ## [Mes 4](Mes_4.qmd)
-
 ## [Mes 5](Mes_5.qmd)
-
 ## [Mes 6](Mes_6.qmd)
