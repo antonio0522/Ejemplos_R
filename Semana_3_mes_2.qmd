@@ -41,7 +41,7 @@ datatable(nueva_tabla)
   datatable(mult_tabl)
 ```
 
-Resultado final obtenios para la columna A
+Resultado final obtenidos para la columna A
 
 ```{r}
 resultado_final <- nueva_tabla %>% add_column(., mult_tabl,.after = "planta")
@@ -68,7 +68,7 @@ datatable(nueva_tabla2)
   datatable(mult_tabl_B)
 ```
 
-Resultado final obtenios para la columna B
+Resultado final obtenidos para la columna B
 
 ```{r}
 resultado_final_B <- nueva_tabla2 %>% add_column(., mult_tabl_B,.after = "planta")
