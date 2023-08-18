@@ -1,100 +1,68 @@
 ---
 title: "Semana 1"
-format: html
-editor: visual
+format: html     
+editor: visual   
 ---
 
-### Ejemplo 1 (Leer archivo CSV con la libreria tidyverse)
+## Ejemplo 1 (Creación y utilización de variable)
 
-1.  En este paso se coloca la librería que utilizaremos, en este caso sería tidyverse
+En est ejemplo se utilizara la libreria dplyr que empleará filter.
 
 ```{r,message=FALSE}
+library(dplyr)
+```
+
+Puede ser útil emplear una lista para una condición. En ese caso se ha de realizar.
+
+```{r,message=FALSE}
+setosa <- iris %>%
+  filter(Species=="setosa")
+head(setosa, 5)
+```
+
+La función table realiza tablas de frecuencia (cuenta registros), en este caso se tienen los tres posibles valores que toma la variable Species con el número de registros que tiene cada elemento de la variable, el número de registros que tiene cada nivel del factor, hay un factor que no tiene registros, no desaparece el nivel, simplemente aparece con 0 observaciones.
+
+```{r,message=FALSE}
+species_to_select = c("setosa","virginica")
+species <- iris %>%
+  filter(Species %in% species_to_select)
+
+table(species$Species)
+```
+
+### Ejemplo 2 (Implementacion de ejemplos graficos)
+
+Se procede a dibujar el gráfico de la función y=x\^2−3x+30 entre −15 y 15. De título, poner "Una parábola". De etiquetas, en el eje 0X, en formato matemático, "x"; y en el eje 0Y, introducir y=x2−3x+30 , también en formato matemático.Se utiliza la función curve()
+
+```{r}
+y<-function(x){x^2-3*x+30}
+plot(y, xlim = c(-15,15), main = "UNA PARÁBOLA", xlab = expression(x), ylab = expression(x^2-3*x+30), col = "blue")
+```
+
+```{r}
+curve(y, xlim = c(-15,15), col = "red", lty = 2, xaxp = c(-15,15,6), yaxp = c(0,300,30), main = "UNA PARÁBOLA")
+```
+
+### Ejemplo 3 (Libreria lubridate)
+
+En este ejemplo se procede a utilizar las siguientes librerias
+
+```{r, message=FALSE}
+library(lubridate)
 library(tidyverse)
 ```
 
-2.  luego procedemos ha crear una variable con nombre datos, la misma se le asignará el archivo que se leerá, en este caso sería el archivo con nombre Datos_Ejemplo, el mismo contiene un formato csv.
-
-Por otra parte se utiliza la función read_csv, esta función se encarga de leer un fichero de valores separados por comas (formato CSV) y lo vuelca en un dataframe, incluyéndo gran candidad de parámetros para determinar cómo se realiza la lectura y cómo deberán tratarse los datos leídos
+En este paso se procede ha asignar una fecha a cada variable.
 
 ```{r}
-datos <- read_csv("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\Datos_Ejemplo.csv")
+date1 <- as_date("2018-04-16")
+date2 <- as_date("2018-05-16")
 ```
 
-3.  Por ultimo se imprime la información de los datos leidos
+Luego de asignar las fechas estipuladas, se procede a contar la cantidad de dias que hay entre una fecha y la otra automaticamente
 
 ```{r}
-datos
-```
-
-### Ejemplo 2 (Se utiliza la libreria gapminder para los datos que vamos a leer y se filtra con filter)
-
-```{r}
-#Se procedio a realizar las instalaciones de los paquetes a utilizar
-#install.packages("tidyverse")
-library(gapminder)
-library(tidyverse)
-data("gapminder")
-#Se muestra una base de datos como ejemplo
-head(gapminder)
-#Se realiza filtracion de datos
-filter(gapminder, country =='Mexico')
-```
-
-### Ejemplo 3 (Implementación de graficas utilizando libreria ggplot2)
-
-```{r}
-#datos de la primera parte
-year <- c('2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018')
-produccion <- c(11, 13, 11, 8, 12, 11, 12, 8, 10)
- 
-# graficando con codigo
- plot(x = year, y = produccion)
- 
- 
-# editando la grafica
- plot(x = year, y = produccion, main = 'produccion', xlab = '', ylab = '', col =  'cornflowerblue', pch = 16, panel.first = grid ())
- 
- 
-# Graficas con ggplot2
-# install.package(ggplot2) # para instalar ggplot2
-library(ggplot2)
- 
-# hacer dataframe
-peliculas <- data.frame(year, 
-                        produccion)
- 
-# graficar utilizando ggplot
- ggplot(data = peliculas, mapping = aes(x = year, y = produccion)) + geom_point() + labs(title = 'produccion')
-```
-
-### Ejemplo 4 (Se utiliza la libreria stringr)
-
-En este ejemplo se utilizara las librerias stringr que tiene la funcion de manipular cadenas: copiar, cambiar caracteres, comparar cadenas, etc.
-
-```{r}
-library(stringr)
-library(tidyverse)
-```
-
-En esta parte se crea un vector con distintos nombre, luego se agrupa por medio de una coma, para que al momento de la impresion quede ordemadamente y separados por coma.
-
-```{r}
-x <- c ("why", "video", "cross", "extra", "deal", "authority")
-str_length(x)
-str_c(x, collapse = ",")
-```
-
-Aqui se realiza un filtrado de datos en la linea de caracteres que tenemos en el vector X, con la finalidad de, mostrar la primera vocal de cada palabra que encontramos en las palabras mostradas en el vector
-
-```{r}
-str_extract(string = x, pattern = "[aeiou]")
-```
-
-En este proceso se analiza los caracteres asignados en la variable palabra, donde le solicitamos mostrar los caracteres que se encuentran entre la posición 5 hasta la posición 13.
-
-```{r}
-palabra <- "Univesidad de Panama"
-str_sub(string = palabra, start = 5, end = 13)
+date2-date1
 ```
 
 ### Asignación 1
@@ -210,4 +178,21 @@ En este paso se selecciona el archivo que se ejecutara, se procede a seleciconar
 ```{r}
 documento_dividido <- (documento_original %>% separate(Nombre, into = c("Nombre", "Edad"), sep = "[/-]") %>% separate(Dirección, into = c("Provincia", "Distrito"), sep = "-"))
 datatable(documento_dividido)
+```
+
+### Asignación 3 (Convertir PDf a XLSX)
+
+Estas serian las librerias a utilizar.
+
+```{r}
+library(DT)
+library(readxl)
+```
+
+Luego de convertir el archivo PDF a xlsx se procede a leer el archivo y imprimirlo en un datatable.
+
+Debo mencionar que para convertir el documento utilicé un convertidor online llamado Adobe.
+
+```{r}
+datatable(Archivo_Excel_Nuevo<-read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\datos_energia.xlsx"))
 ```

@@ -282,12 +282,12 @@ chr (1): ;Base de datos de productos;;;;;;;;
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># graficando con codigo</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(<span class="at">x =</span> year, <span class="at">y =</span> produccion)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Semana_3_mes_2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="Semana_3_mes_1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># editando la grafica</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(<span class="at">x =</span> year, <span class="at">y =</span> produccion, <span class="at">main =</span> <span class="st">'produccion'</span>, <span class="at">xlab =</span> <span class="st">''</span>, <span class="at">ylab =</span> <span class="st">''</span>, <span class="at">col =</span>  <span class="st">'cornflowerblue'</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">panel.first =</span> <span class="fu">grid</span> ())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Semana_3_mes_2_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="672"></p>
+<p><img src="Semana_3_mes_1_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Graficas con ggplot2</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.package(ggplot2) # para instalar ggplot2</span></span>
@@ -300,7 +300,7 @@ chr (1): ;Base de datos de productos;;;;;;;;
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># graficar utilizando ggplot</span></span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> peliculas, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> produccion)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'produccion'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Semana_3_mes_2_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid" width="672"></p>
+<p><img src="Semana_3_mes_1_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -353,14 +353,14 @@ chr (1): ;Base de datos de productos;;;;;;;;
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(Plantas_datos<span class="ot">&lt;-</span><span class="fu">read_xlsx</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">anton</span><span class="sc">\\</span><span class="st">OneDrive</span><span class="sc">\\</span><span class="st">Documentos</span><span class="sc">\\</span><span class="st">Ejemplos_R</span><span class="sc">\\</span><span class="st">datos_asignacion_2_data_1.xlsx"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-115e5419af38a0cc120f" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-115e5419af38a0cc120f">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["AES Panama","AES GAS","ENEL  FORTUNA"],[481.96,381,300],[1523.05,1376,1383.17],[306.55,349.89,289.49]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n      <th>instalada<\/th>\n      <th>generacion<\/th>\n      <th>firme<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-316b07842b7ac7685336" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-316b07842b7ac7685336">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["AES Panama","AES GAS","ENEL  FORTUNA"],[481.96,381,300],[1523.05,1376,1383.17],[306.55,349.89,289.49]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n      <th>instalada<\/th>\n      <th>generacion<\/th>\n      <th>firme<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(Tipo_energia<span class="ot">&lt;-</span><span class="fu">read_xlsx</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">anton</span><span class="sc">\\</span><span class="st">OneDrive</span><span class="sc">\\</span><span class="st">Documentos</span><span class="sc">\\</span><span class="st">Ejemplos_R</span><span class="sc">\\</span><span class="st">datos_asignacion_2_data_2.xlsx"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1c250f3e3893b0fac15f" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-1c250f3e3893b0fac15f">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["instalada","generacion","firme"],[1,2,4],[15,20,50]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>tipo_energia<\/th>\n      <th>A<\/th>\n      <th>B<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-accf3ec0191e5dc19305" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-accf3ec0191e5dc19305">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["instalada","generacion","firme"],[1,2,4],[15,20,50]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>tipo_energia<\/th>\n      <th>A<\/th>\n      <th>B<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Operaciones realizadas utilizando la columna A</p>
@@ -373,8 +373,8 @@ chr (1): ;Base de datos de productos;;;;;;;;
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(nueva_tabla)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f8bc12ea6f726db502e4" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-f8bc12ea6f726db502e4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["AES Panama","AES GAS","ENEL  FORTUNA"],[481.96,381,300],[1,1,1],[1523.05,1376,1383.17],[2,2,2],[306.55,349.89,289.49],[4,4,4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n      <th>instalada<\/th>\n      <th>Fila 1<\/th>\n      <th>generacion<\/th>\n      <th>Fila 2<\/th>\n      <th>firme<\/th>\n      <th>Fila 3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-52fbb0146abd31ed2756" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-52fbb0146abd31ed2756">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["AES Panama","AES GAS","ENEL  FORTUNA"],[481.96,381,300],[1,1,1],[1523.05,1376,1383.17],[2,2,2],[306.55,349.89,289.49],[4,4,4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n      <th>instalada<\/th>\n      <th>Fila 1<\/th>\n      <th>generacion<\/th>\n      <th>Fila 2<\/th>\n      <th>firme<\/th>\n      <th>Fila 3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
@@ -386,8 +386,8 @@ chr (1): ;Base de datos de productos;;;;;;;;
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(mult_tabl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-2f77068c8ce39f0698a0" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-2f77068c8ce39f0698a0">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],[4754.26,4532.559999999999,4224.3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Valores<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8d9bb08fa4c4ed303720" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8d9bb08fa4c4ed303720">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],[4754.26,4532.559999999999,4224.3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Valores<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Resultado final obtenidos para la columna A</p>
@@ -396,8 +396,8 @@ chr (1): ;Base de datos de productos;;;;;;;;
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(resultado_final)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9d8f7bde277fe2db6be4" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-9d8f7bde277fe2db6be4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["AES Panama","AES GAS","ENEL  FORTUNA"],[4754.26,4532.559999999999,4224.3],[481.96,381,300],[1,1,1],[1523.05,1376,1383.17],[2,2,2],[306.55,349.89,289.49],[4,4,4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n      <th>Valores<\/th>\n      <th>instalada<\/th>\n      <th>Fila 1<\/th>\n      <th>generacion<\/th>\n      <th>Fila 2<\/th>\n      <th>firme<\/th>\n      <th>Fila 3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-0c7caa892f54d2affd1d" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0c7caa892f54d2affd1d">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["AES Panama","AES GAS","ENEL  FORTUNA"],[4754.26,4532.559999999999,4224.3],[481.96,381,300],[1,1,1],[1523.05,1376,1383.17],[2,2,2],[306.55,349.89,289.49],[4,4,4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n      <th>Valores<\/th>\n      <th>instalada<\/th>\n      <th>Fila 1<\/th>\n      <th>generacion<\/th>\n      <th>Fila 2<\/th>\n      <th>firme<\/th>\n      <th>Fila 3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Operaciones realizadas utilizando la columna B</p>
@@ -410,8 +410,8 @@ chr (1): ;Base de datos de productos;;;;;;;;
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(nueva_tabla2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-3f52a49fb30dc39079f6" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-3f52a49fb30dc39079f6">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["AES Panama","AES GAS","ENEL  FORTUNA"],[481.96,381,300],[15,15,15],[1523.05,1376,1383.17],[20,20,20],[306.55,349.89,289.49],[50,50,50]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n      <th>instalada<\/th>\n      <th>Fila 1B<\/th>\n      <th>generacion<\/th>\n      <th>Fila 2B<\/th>\n      <th>firme<\/th>\n      <th>Fila 3B<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f50dcc6759bfd6c97391" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-f50dcc6759bfd6c97391">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["AES Panama","AES GAS","ENEL  FORTUNA"],[481.96,381,300],[15,15,15],[1523.05,1376,1383.17],[20,20,20],[306.55,349.89,289.49],[50,50,50]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n      <th>instalada<\/th>\n      <th>Fila 1B<\/th>\n      <th>generacion<\/th>\n      <th>Fila 2B<\/th>\n      <th>firme<\/th>\n      <th>Fila 3B<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
@@ -423,8 +423,8 @@ chr (1): ;Base de datos de productos;;;;;;;;
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(mult_tabl_B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7c753f53d7ceb010a390" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-7c753f53d7ceb010a390">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],[53017.9,50729.5,46637.9]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Valores<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-c75352c5783df5d1aa11" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-c75352c5783df5d1aa11">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],[53017.9,50729.5,46637.9]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Valores<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Resultado final obtenidos para la columna B</p>
@@ -433,8 +433,8 @@ chr (1): ;Base de datos de productos;;;;;;;;
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(resultado_final_B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7e81187334f5e2e68bbc" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-7e81187334f5e2e68bbc">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["AES Panama","AES GAS","ENEL  FORTUNA"],[53017.9,50729.5,46637.9],[481.96,381,300],[15,15,15],[1523.05,1376,1383.17],[20,20,20],[306.55,349.89,289.49],[50,50,50]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n      <th>Valores<\/th>\n      <th>instalada<\/th>\n      <th>Fila 1B<\/th>\n      <th>generacion<\/th>\n      <th>Fila 2B<\/th>\n      <th>firme<\/th>\n      <th>Fila 3B<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9844cb6f5e21b6d25459" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9844cb6f5e21b6d25459">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["AES Panama","AES GAS","ENEL  FORTUNA"],[53017.9,50729.5,46637.9],[481.96,381,300],[15,15,15],[1523.05,1376,1383.17],[20,20,20],[306.55,349.89,289.49],[50,50,50]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n      <th>Valores<\/th>\n      <th>instalada<\/th>\n      <th>Fila 1B<\/th>\n      <th>generacion<\/th>\n      <th>Fila 2B<\/th>\n      <th>firme<\/th>\n      <th>Fila 3B<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 

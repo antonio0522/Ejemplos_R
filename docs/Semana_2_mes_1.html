@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Ejemplos_R - Semana 2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.28/datatables.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ejemplos_R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#ejemplo-1matrices-sencillas" id="toc-ejemplo-1matrices-sencillas" class="nav-link active" data-scroll-target="#ejemplo-1matrices-sencillas">Ejemplo 1(Matrices sencillas)</a></li>
+  <li><a href="#ejemplo-2-introducir-la-matriz-identidad-de-tamaño-4x4-en-rstudio-sin-usar-un-vector-de-16-valores" id="toc-ejemplo-2-introducir-la-matriz-identidad-de-tamaño-4x4-en-rstudio-sin-usar-un-vector-de-16-valores" class="nav-link" data-scroll-target="#ejemplo-2-introducir-la-matriz-identidad-de-tamaño-4x4-en-rstudio-sin-usar-un-vector-de-16-valores">Ejemplo 2 (Introducir la matriz identidad de tamaño 4x4 en RStudio (sin usar un vector de 16 valores))</a></li>
+  <li><a href="#ejemplo-3-transformación-de-matriz-original-a-transpuesta" id="toc-ejemplo-3-transformación-de-matriz-original-a-transpuesta" class="nav-link" data-scroll-target="#ejemplo-3-transformación-de-matriz-original-a-transpuesta">Ejemplo 3 (Transformación de matriz original a transpuesta)</a></li>
+  <li><a href="#ejemplo-4-muestra-aleatoria-extraída-con-reposición-de-la-población-p" id="toc-ejemplo-4-muestra-aleatoria-extraída-con-reposición-de-la-población-p" class="nav-link" data-scroll-target="#ejemplo-4-muestra-aleatoria-extraída-con-reposición-de-la-población-p">Ejemplo 4 (Muestra aleatoria extraída CON REPOSICIÓN de la población P)</a></li>
+  <li><a href="#ejemplo-5-graficos-circulares-o-de-sectores" id="toc-ejemplo-5-graficos-circulares-o-de-sectores" class="nav-link" data-scroll-target="#ejemplo-5-graficos-circulares-o-de-sectores">Ejemplo 5 (Graficos circulares o de sectores)</a></li>
+  <li><a href="#ejemplo-6-usando-la-función-table.freq" id="toc-ejemplo-6-usando-la-función-table.freq" class="nav-link" data-scroll-target="#ejemplo-6-usando-la-función-table.freq">Ejemplo 6 (Usando la función table.freq())</a></li>
+  <li><a href="#asignacion-1-limpieza-de-datos" id="toc-asignacion-1-limpieza-de-datos" class="nav-link" data-scroll-target="#asignacion-1-limpieza-de-datos">Asignacion 1 (Limpieza de datos)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Semana 2</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="ejemplo-1matrices-sencillas" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-1matrices-sencillas">Ejemplo 1(Matrices sencillas)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La función matrix genera una matriz en RStudio o R base, pasando como input un vector numérico, de caracteres o lógico.</p>
+<p>La función ncol() devuelve el número de columnas de una matriz. La función nrow() devuelve el número de filas de una matriz.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>matriz_A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">12</span>),<span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol=</span><span class="dv">3</span>, <span class="at">byrow =</span> T )</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(matriz_A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9b86795ebe67961b31a3" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9b86795ebe67961b31a3">{"x":{"filter":"none","vertical":false,"data":[[1,2,3,4],[2,4,6,8],[3,6,9,12]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>V1<\/th>\n      <th>V2<\/th>\n      <th>V3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[0,1,2]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="ejemplo-2-introducir-la-matriz-identidad-de-tamaño-4x4-en-rstudio-sin-usar-un-vector-de-16-valores" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-2-introducir-la-matriz-identidad-de-tamaño-4x4-en-rstudio-sin-usar-un-vector-de-16-valores">Ejemplo 2 (Introducir la matriz identidad de tamaño 4x4 en RStudio (sin usar un vector de 16 valores))</h3>
+<p>La función diag() en lenguaje R se usa para construir una matriz diagonal.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(<span class="fu">diag</span>(<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8da2f261c3aeb6eb289f" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8da2f261c3aeb6eb289f">{"x":{"filter":"none","vertical":false,"data":[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>V1<\/th>\n      <th>V2<\/th>\n      <th>V3<\/th>\n      <th>V4<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[0,1,2,3]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="ejemplo-3-transformación-de-matriz-original-a-transpuesta" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-3-transformación-de-matriz-original-a-transpuesta">Ejemplo 3 (Transformación de matriz original a transpuesta)</h3>
+<p>La función matrix genera una matriz en RStudio o R base, pasando como input un vector numérico, de caracteres o lógico.</p>
+<p>La función ncol() devuelve el número de columnas de una matriz. La función nrow() devuelve el número de filas de una matriz.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>matri_A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>),<span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol=</span><span class="dv">3</span>, <span class="at">byrow =</span> T )</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(matri_A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-c71b9fa5aa71b0ac41d4" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-c71b9fa5aa71b0ac41d4">{"x":{"filter":"none","vertical":false,"data":[[1,4,7],[2,5,8],[3,6,9]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>V1<\/th>\n      <th>V2<\/th>\n      <th>V3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[0,1,2]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Matriz transformada ha la transpuesta</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(<span class="fu">t</span>(matri_A))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-540752486c3e06a2ab29" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-540752486c3e06a2ab29">{"x":{"filter":"none","vertical":false,"data":[[1,2,3],[4,5,6],[7,8,9]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>V1<\/th>\n      <th>V2<\/th>\n      <th>V3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[0,1,2]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="ejemplo-4-muestra-aleatoria-extraída-con-reposición-de-la-población-p" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-4-muestra-aleatoria-extraída-con-reposición-de-la-población-p">Ejemplo 4 (Muestra aleatoria extraída CON REPOSICIÓN de la población P)</h3>
+<p>En este ejemplo se crea una variable de tipo cuatitativa contínua, que lleva el nombre de P Luego se extrae 5 valores de la variable P, pero de manera aleatoria</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>P<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>muestra<span class="ot">=</span><span class="fu">sample</span>(P,<span class="dv">5</span>,<span class="at">rep=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Se imprime los resultados</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(muestra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  muestra
+1       6
+2       1
+3       5
+4       8
+5       1</code></pre>
+</div>
+</div>
+</section>
+<section id="ejemplo-5-graficos-circulares-o-de-sectores" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-5-graficos-circulares-o-de-sectores">Ejemplo 5 (Graficos circulares o de sectores)</h3>
+<p>Se procede a crear una variable cuantitativa continua con el nombre de sexo, donde se guardará la siguiente información</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sexo<span class="ot">=</span><span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="st">"Hombre"</span>,<span class="st">"Mujer"</span>,<span class="st">"Mujer"</span>,<span class="st">"Hombre"</span>,<span class="st">"Mujer"</span>,<span class="st">"Mujer"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En este paso se realiza un conteo de la cantidad de hombres y mujeres, para luego determinar cual contiene mas mayoria de sexo</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(<span class="fu">table</span>(sexo),<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Hombres"</span>,<span class="st">"Mujeres"</span>), <span class="at">main=</span><span class="st">"Sexos"</span>,<span class="at">edges =</span> <span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Semana_2_mes_1_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="ejemplo-6-usando-la-función-table.freq" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-6-usando-la-función-table.freq">Ejemplo 6 (Usando la función table.freq())</h3>
+<p>Se utilizará nueva libreria</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"agricolae"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Se crea una variable cuantitativa discreta, la que tiene nombre de edad,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>edad<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">12</span>,<span class="dv">15</span>,<span class="dv">12</span>,<span class="dv">41</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>tab_Edad <span class="ot">&lt;-</span> <span class="fu">hist</span>(edad, <span class="at">plot=</span><span class="cn">FALSE</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>tab_Edad2<span class="ot">=</span><span class="fu">table.freq</span>(tab_Edad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Se imprime resultado</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(tab_Edad2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8f70a09506836f92a71b" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8f70a09506836f92a71b">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],[10,20,30,40],[20,30,40,50],[15,25,35,45],[5,0,0,1],[83.3,0,0,16.7],[5,5,5,6],[83.3,83.3,83.3,100]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Lower<\/th>\n      <th>Upper<\/th>\n      <th>Main<\/th>\n      <th>Frequency<\/th>\n      <th>Percentage<\/th>\n      <th>CF<\/th>\n      <th>CPF<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="asignacion-1-limpieza-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="asignacion-1-limpieza-de-datos">Asignacion 1 (Limpieza de datos)</h3>
+<p>Estas serian las librerias a utilizar.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Se procede ha cargar el archivo de la semana anterior</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(Archivo_Excel_Nuevo<span class="ot">&lt;-</span><span class="fu">read_xlsx</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">anton</span><span class="sc">\\</span><span class="st">OneDrive</span><span class="sc">\\</span><span class="st">Documentos</span><span class="sc">\\</span><span class="st">Ejemplos_R</span><span class="sc">\\</span><span class="st">datos_energia.xlsx"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-001d0beda4b78278cadc" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-001d0beda4b78278cadc">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77"],["HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS",null,null,"FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS",null,"TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS",null,null,"EOLICAS","EOLICAS","EOLICAS"],["1-acp","2-AES Panama","3-AES CHANGUINOLA","4-ALTO VALLE   COCHEA","5-cafe de eleta","6-CALDERA ENERGY","7-CELSIA  ALTERNERGY","8-CELSIA  BONTEX","9-CORP. ENERGIA ISTMO","10-EISA  ELECTRON INVESTMENT","11-EMNADENSA  BUGABA  Y  TOTUMA","12-ENEL  FORTUNA","13-ELECTROGENERADORA","14-ESEPSA","15-FOUNTAIN  INTERTRADE","16-GENISA BARRO blanco","17-hIDRO BOQUERON","18-HIDRO ECO TERIBE","19-HIDRO IBERICA  EL RAILE","20-HIDRO PANAMA","21-HIDRO PIEDRA","22-HYDRO CAISAN  EL alto","23-ideal                     PANAMA","24-ISTMUS   CONCEPCION","25-PASO ANCHO","26-PERLAS NORTE","27-PERLAS SUR","28-PEDREGALITO","29-RIO CHICO","30-SALTOS DEL FRANCOLI  PLANETAS  1 y 2","31-SAN ANDRES  DESARROLLOS  HID CORP.","32-SAN LORENZO",null,null,"33-AES PANAMA SRL","34-AVANZALIA","35-AZUCARERA  NACIONAL","36-AZUERO VENTURE","37-BOQUERON","38-CELSIA SOLAR  PARQUE PRUDENCIA","39-CELSIA  DIVISA SOLAR  10  MW","40-COCLE VENTURE","41-CONCEPTO SOLAR","42-ECOSOLAR  1 y 2","43-DACONAN  SOLAR","44-EL FRAILE SOLAR","45-ELECTRICIDAD SOLAR    MENDOZA","46-ENEL  SOLAR","47-FARALLON 2","48-GENERACION SOLAR","49-PANAMA SOLAR 2 POCRf","50-PANAMA VENTURE","51-GENA  SOLAR  DON FELIX","52-PANASOLAR   GENERATION","53-PSZ 1   EL ESPINAL","54-SARIGUA   EGESA","55-SOLAR BUGABA","56-SOLAR  DEVELOPMENT","57-SOLPAC","58-TECNISOL",null,"59-AES GAS NATURAL ATLANTICO","60-CELSIA  ALTERNEGY  CATIVA","61-CELSIA   BL  M","62-GENA","63-EMNADESA   TROPITERMICA","64-PAN AM","65-URBALIA","66-ISLAND  POWER","67-SPARKLE  POWER","68-MINERA PANAMA","69-ACP",null,null,"70-NUEVO CHAGRES  AES PANAMA","71-UEP PENONOME  II","72-PARQUE  EOLICO  TOABRE"],[60,481.96,222.17,15.5,0.53,19.75,92.48999999999999,25.34,19.83,84.65000000000001,17.57,300,7.8,22.48,57.9,28.58,5.25,31.8,7.13,4.3,21.62,72.2,145,10,6.78,10,10,19.9,12.52,13.64,9.890000000000001,8.119999999999999,null,null,39.86,120,0.96,9.52,4.75,9.69,9.9,8.99,0.96,9.99,3.24,0.48,3,111.66,9.6,0.1,16,8.99,9.99,9.9,9,2.4,2.56,10,9.99,40,null,381,87,68,150,6.3,144,8.1,46.43,49.2,300,99.62,null,null,55,215,66],[1.51,12.1,5.58,0.39,0.01,0.5,2.32,0.64,0.5,2.13,0.44,7.53,0.2,0.5600000000000001,1.45,0.72,0.13,0.8,0.18,0.11,0.54,1.81,3.64,0.25,0.17,0.25,0.25,0.5,0.31,0.34,0.25,0.2,null,null,1,3.01,0.02,0.24,0.12,0.24,0.25,0.23,0.02,0.25,0.08,0.01,0.08,2.8,0.24,0,0.4,0.23,0.25,0.25,0.23,0.06,0.06,0.25,0.25,1,null,9.57,2.18,1.71,3.77,0.16,3.62,0.2,1.17,1.24,7.53,2.5,null,null,1.38,5.4,1.66],[274.29,1523.05,1057.98,75.91,1.64,99.98,372.41,87.11,93.40000000000001,514.9,72.3,1383.17,39.3,114.93,298.88,148.37,32.69,152.7,36.58,7.68,127.35,322.21,796.2,58.57,27.7,61.61,61.57,92.31999999999999,58.9,66.73,34.37,39.06,null,null,77.38,192.24,0.05,18.42,2.93,15.6,13.7,18.29,1.36,30.18,5.64,0.71,5.25,119.94,5.1,0.04,29.23,16.96,14.79,13.98,12.23,1.58,2.55,7.23,3.87,74.01000000000001,null,1376,102.67,0.91,57.94,0.36,453.62,20.41,103.46,103.52,70.39,155.24,null,null,82.15000000000001,385.49,116.66],[2.32,12.86,8.93,0.64,0.01,0.84,3.14,0.74,0.79,4.35,0.61,11.68,0.33,0.97,2.52,1.25,0.28,1.29,0.31,0.06,1.08,2.72,6.72,0.49,0.23,0.52,0.52,0.78,0.5,0.5600000000000001,0.29,0.33,null,null,0.65,1.62,0,0.16,0.02,0.13,0.12,0.15,0.01,0.25,0.05,0.01,0.04,1.01,0.04,0,0.25,0.14,0.12,0.12,0.1,0.01,0.02,0.06,0.03,0.62,null,11.62,0.87,0.01,0.49,0,3.83,0.17,0.87,0.87,0.59,1.31,null,null,0.6899999999999999,3.25,0.98],[0,306.55,175.33,3.06,0.13,3.92,80.70999999999999,23.04,3.17,57.51,3.91,289.49,1.56,7.31,19.42,11.57,0.91,22.22,1.5,0.74,3.1,22.14,51.16,2.49,3.08,2.46,2.46,2.04,0.38,4.45,2.54,1.33,null,null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,349.89,73.23999999999999,0,142.74,2.04,135.06,0,46.43,49.2,0,75.36,null,null,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>TIPO<\/th>\n      <th>ID-PLANTA<\/th>\n      <th>CaPacidad Instalada MW<\/th>\n      <th>%CI<\/th>\n      <th>GENERACIÓN BRUTAL (GWh)<\/th>\n      <th>%GB<\/th>\n      <th>CAPACIDAD FIRME MW<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p><br> <strong>Elimiacion de celdas vacias</strong></p>
+<p>En este paso seleccionamos los espacios que estan vacios en las columnas, que serian 5 por cada celda, como lo vemos ha continuacion.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(Archivo_Excel_Nuevo, <span class="cf">function</span>(x) <span class="fu">sum</span>(<span class="fu">is.na</span>(x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   TIPO               ID-PLANTA  CaPacidad Instalada MW 
+                      5                       5                       5 
+                    %CI GENERACIÓN BRUTAL (GWh)                     %GB 
+                      5                       5                       5 
+     CAPACIDAD FIRME MW 
+                      5 </code></pre>
+</div>
+</div>
+<p>Luego de obtener los espacios de las celdas vacias e cada columna, se procede a la eliminacion de la misma, como podemos observas a continuacion.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>eliminacion_Celda_vacia <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(Archivo_Excel_Nuevo)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(eliminacion_Celda_vacia)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f5bad7962db18032f74f" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-f5bad7962db18032f74f">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72"],["HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","EOLICAS","EOLICAS","EOLICAS"],["1-acp","2-AES Panama","3-AES CHANGUINOLA","4-ALTO VALLE   COCHEA","5-cafe de eleta","6-CALDERA ENERGY","7-CELSIA  ALTERNERGY","8-CELSIA  BONTEX","9-CORP. ENERGIA ISTMO","10-EISA  ELECTRON INVESTMENT","11-EMNADENSA  BUGABA  Y  TOTUMA","12-ENEL  FORTUNA","13-ELECTROGENERADORA","14-ESEPSA","15-FOUNTAIN  INTERTRADE","16-GENISA BARRO blanco","17-hIDRO BOQUERON","18-HIDRO ECO TERIBE","19-HIDRO IBERICA  EL RAILE","20-HIDRO PANAMA","21-HIDRO PIEDRA","22-HYDRO CAISAN  EL alto","23-ideal                     PANAMA","24-ISTMUS   CONCEPCION","25-PASO ANCHO","26-PERLAS NORTE","27-PERLAS SUR","28-PEDREGALITO","29-RIO CHICO","30-SALTOS DEL FRANCOLI  PLANETAS  1 y 2","31-SAN ANDRES  DESARROLLOS  HID CORP.","32-SAN LORENZO","33-AES PANAMA SRL","34-AVANZALIA","35-AZUCARERA  NACIONAL","36-AZUERO VENTURE","37-BOQUERON","38-CELSIA SOLAR  PARQUE PRUDENCIA","39-CELSIA  DIVISA SOLAR  10  MW","40-COCLE VENTURE","41-CONCEPTO SOLAR","42-ECOSOLAR  1 y 2","43-DACONAN  SOLAR","44-EL FRAILE SOLAR","45-ELECTRICIDAD SOLAR    MENDOZA","46-ENEL  SOLAR","47-FARALLON 2","48-GENERACION SOLAR","49-PANAMA SOLAR 2 POCRf","50-PANAMA VENTURE","51-GENA  SOLAR  DON FELIX","52-PANASOLAR   GENERATION","53-PSZ 1   EL ESPINAL","54-SARIGUA   EGESA","55-SOLAR BUGABA","56-SOLAR  DEVELOPMENT","57-SOLPAC","58-TECNISOL","59-AES GAS NATURAL ATLANTICO","60-CELSIA  ALTERNEGY  CATIVA","61-CELSIA   BL  M","62-GENA","63-EMNADESA   TROPITERMICA","64-PAN AM","65-URBALIA","66-ISLAND  POWER","67-SPARKLE  POWER","68-MINERA PANAMA","69-ACP","70-NUEVO CHAGRES  AES PANAMA","71-UEP PENONOME  II","72-PARQUE  EOLICO  TOABRE"],[60,481.96,222.17,15.5,0.53,19.75,92.48999999999999,25.34,19.83,84.65000000000001,17.57,300,7.8,22.48,57.9,28.58,5.25,31.8,7.13,4.3,21.62,72.2,145,10,6.78,10,10,19.9,12.52,13.64,9.890000000000001,8.119999999999999,39.86,120,0.96,9.52,4.75,9.69,9.9,8.99,0.96,9.99,3.24,0.48,3,111.66,9.6,0.1,16,8.99,9.99,9.9,9,2.4,2.56,10,9.99,40,381,87,68,150,6.3,144,8.1,46.43,49.2,300,99.62,55,215,66],[1.51,12.1,5.58,0.39,0.01,0.5,2.32,0.64,0.5,2.13,0.44,7.53,0.2,0.5600000000000001,1.45,0.72,0.13,0.8,0.18,0.11,0.54,1.81,3.64,0.25,0.17,0.25,0.25,0.5,0.31,0.34,0.25,0.2,1,3.01,0.02,0.24,0.12,0.24,0.25,0.23,0.02,0.25,0.08,0.01,0.08,2.8,0.24,0,0.4,0.23,0.25,0.25,0.23,0.06,0.06,0.25,0.25,1,9.57,2.18,1.71,3.77,0.16,3.62,0.2,1.17,1.24,7.53,2.5,1.38,5.4,1.66],[274.29,1523.05,1057.98,75.91,1.64,99.98,372.41,87.11,93.40000000000001,514.9,72.3,1383.17,39.3,114.93,298.88,148.37,32.69,152.7,36.58,7.68,127.35,322.21,796.2,58.57,27.7,61.61,61.57,92.31999999999999,58.9,66.73,34.37,39.06,77.38,192.24,0.05,18.42,2.93,15.6,13.7,18.29,1.36,30.18,5.64,0.71,5.25,119.94,5.1,0.04,29.23,16.96,14.79,13.98,12.23,1.58,2.55,7.23,3.87,74.01000000000001,1376,102.67,0.91,57.94,0.36,453.62,20.41,103.46,103.52,70.39,155.24,82.15000000000001,385.49,116.66],[2.32,12.86,8.93,0.64,0.01,0.84,3.14,0.74,0.79,4.35,0.61,11.68,0.33,0.97,2.52,1.25,0.28,1.29,0.31,0.06,1.08,2.72,6.72,0.49,0.23,0.52,0.52,0.78,0.5,0.5600000000000001,0.29,0.33,0.65,1.62,0,0.16,0.02,0.13,0.12,0.15,0.01,0.25,0.05,0.01,0.04,1.01,0.04,0,0.25,0.14,0.12,0.12,0.1,0.01,0.02,0.06,0.03,0.62,11.62,0.87,0.01,0.49,0,3.83,0.17,0.87,0.87,0.59,1.31,0.6899999999999999,3.25,0.98],[0,306.55,175.33,3.06,0.13,3.92,80.70999999999999,23.04,3.17,57.51,3.91,289.49,1.56,7.31,19.42,11.57,0.91,22.22,1.5,0.74,3.1,22.14,51.16,2.49,3.08,2.46,2.46,2.04,0.38,4.45,2.54,1.33,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,349.89,73.23999999999999,0,142.74,2.04,135.06,0,46.43,49.2,0,75.36,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>TIPO<\/th>\n      <th>ID-PLANTA<\/th>\n      <th>CaPacidad Instalada MW<\/th>\n      <th>%CI<\/th>\n      <th>GENERACIÓN BRUTAL (GWh)<\/th>\n      <th>%GB<\/th>\n      <th>CAPACIDAD FIRME MW<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p><br> <strong>Eliminacion de guiones y números de la columna ID-PLANTA</strong></p>
+<p>Se selecciona la columna que se eliminaran los caracteres</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>modificar_column <span class="ot">&lt;-</span> <span class="st">"ID-PLANTA"</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>eliminacion_Celda_vacia[[modificar_column]] <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">d|-"</span>, <span class="st">""</span>, eliminacion_Celda_vacia[[modificar_column]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br> <strong>Se imprime los resultados</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(eliminacion_Celda_vacia)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-bae8815c7eb37fc735c4" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-bae8815c7eb37fc735c4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72"],["HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","EOLICAS","EOLICAS","EOLICAS"],["acp","AES Panama","AES CHANGUINOLA","ALTO VALLE   COCHEA","cafe de eleta","CALDERA ENERGY","CELSIA  ALTERNERGY","CELSIA  BONTEX","CORP. ENERGIA ISTMO","EISA  ELECTRON INVESTMENT","EMNADENSA  BUGABA  Y  TOTUMA","ENEL  FORTUNA","ELECTROGENERADORA","ESEPSA","FOUNTAIN  INTERTRADE","GENISA BARRO blanco","hIDRO BOQUERON","HIDRO ECO TERIBE","HIDRO IBERICA  EL RAILE","HIDRO PANAMA","HIDRO PIEDRA","HYDRO CAISAN  EL alto","ideal                     PANAMA","ISTMUS   CONCEPCION","PASO ANCHO","PERLAS NORTE","PERLAS SUR","PEDREGALITO","RIO CHICO","SALTOS DEL FRANCOLI  PLANETAS   y ","SAN ANDRES  DESARROLLOS  HID CORP.","SAN LORENZO","AES PANAMA SRL","AVANZALIA","AZUCARERA  NACIONAL","AZUERO VENTURE","BOQUERON","CELSIA SOLAR  PARQUE PRUDENCIA","CELSIA  DIVISA SOLAR    MW","COCLE VENTURE","CONCEPTO SOLAR","ECOSOLAR   y ","DACONAN  SOLAR","EL FRAILE SOLAR","ELECTRICIDAD SOLAR    MENDOZA","ENEL  SOLAR","FARALLON ","GENERACION SOLAR","PANAMA SOLAR  POCRf","PANAMA VENTURE","GENA  SOLAR  DON FELIX","PANASOLAR   GENERATION","PSZ    EL ESPINAL","SARIGUA   EGESA","SOLAR BUGABA","SOLAR  DEVELOPMENT","SOLPAC","TECNISOL","AES GAS NATURAL ATLANTICO","CELSIA  ALTERNEGY  CATIVA","CELSIA   BL  M","GENA","EMNADESA   TROPITERMICA","PAN AM","URBALIA","ISLAND  POWER","SPARKLE  POWER","MINERA PANAMA","ACP","NUEVO CHAGRES  AES PANAMA","UEP PENONOME  II","PARQUE  EOLICO  TOABRE"],[60,481.96,222.17,15.5,0.53,19.75,92.48999999999999,25.34,19.83,84.65000000000001,17.57,300,7.8,22.48,57.9,28.58,5.25,31.8,7.13,4.3,21.62,72.2,145,10,6.78,10,10,19.9,12.52,13.64,9.890000000000001,8.119999999999999,39.86,120,0.96,9.52,4.75,9.69,9.9,8.99,0.96,9.99,3.24,0.48,3,111.66,9.6,0.1,16,8.99,9.99,9.9,9,2.4,2.56,10,9.99,40,381,87,68,150,6.3,144,8.1,46.43,49.2,300,99.62,55,215,66],[1.51,12.1,5.58,0.39,0.01,0.5,2.32,0.64,0.5,2.13,0.44,7.53,0.2,0.5600000000000001,1.45,0.72,0.13,0.8,0.18,0.11,0.54,1.81,3.64,0.25,0.17,0.25,0.25,0.5,0.31,0.34,0.25,0.2,1,3.01,0.02,0.24,0.12,0.24,0.25,0.23,0.02,0.25,0.08,0.01,0.08,2.8,0.24,0,0.4,0.23,0.25,0.25,0.23,0.06,0.06,0.25,0.25,1,9.57,2.18,1.71,3.77,0.16,3.62,0.2,1.17,1.24,7.53,2.5,1.38,5.4,1.66],[274.29,1523.05,1057.98,75.91,1.64,99.98,372.41,87.11,93.40000000000001,514.9,72.3,1383.17,39.3,114.93,298.88,148.37,32.69,152.7,36.58,7.68,127.35,322.21,796.2,58.57,27.7,61.61,61.57,92.31999999999999,58.9,66.73,34.37,39.06,77.38,192.24,0.05,18.42,2.93,15.6,13.7,18.29,1.36,30.18,5.64,0.71,5.25,119.94,5.1,0.04,29.23,16.96,14.79,13.98,12.23,1.58,2.55,7.23,3.87,74.01000000000001,1376,102.67,0.91,57.94,0.36,453.62,20.41,103.46,103.52,70.39,155.24,82.15000000000001,385.49,116.66],[2.32,12.86,8.93,0.64,0.01,0.84,3.14,0.74,0.79,4.35,0.61,11.68,0.33,0.97,2.52,1.25,0.28,1.29,0.31,0.06,1.08,2.72,6.72,0.49,0.23,0.52,0.52,0.78,0.5,0.5600000000000001,0.29,0.33,0.65,1.62,0,0.16,0.02,0.13,0.12,0.15,0.01,0.25,0.05,0.01,0.04,1.01,0.04,0,0.25,0.14,0.12,0.12,0.1,0.01,0.02,0.06,0.03,0.62,11.62,0.87,0.01,0.49,0,3.83,0.17,0.87,0.87,0.59,1.31,0.6899999999999999,3.25,0.98],[0,306.55,175.33,3.06,0.13,3.92,80.70999999999999,23.04,3.17,57.51,3.91,289.49,1.56,7.31,19.42,11.57,0.91,22.22,1.5,0.74,3.1,22.14,51.16,2.49,3.08,2.46,2.46,2.04,0.38,4.45,2.54,1.33,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,349.89,73.23999999999999,0,142.74,2.04,135.06,0,46.43,49.2,0,75.36,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>TIPO<\/th>\n      <th>ID-PLANTA<\/th>\n      <th>CaPacidad Instalada MW<\/th>\n      <th>%CI<\/th>\n      <th>GENERACIÓN BRUTAL (GWh)<\/th>\n      <th>%GB<\/th>\n      <th>CAPACIDAD FIRME MW<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p><br> <strong>Valores en 0</strong></p>
+<p>Se filta los resultados obtenidos por cada columna con valor en 0</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>columnas_cero <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">apply</span>(eliminacion_Celda_vacia <span class="sc">==</span> <span class="dv">0</span>, <span class="dv">1</span>, any))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(columnas_cero)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   columnas_cero
+1              1
+2             33
+3             34
+4             35
+5             36
+6             37
+7             38
+8             39
+9             40
+10            41
+11            42
+12            43
+13            44
+14            45
+15            46
+16            47
+17            48
+18            49
+19            50
+20            51
+21            52
+22            53
+23            54
+24            55
+25            56
+26            57
+27            58
+28            61
+29            63
+30            65
+31            68
+32            70
+33            71
+34            72</code></pre>
+</div>
+</div>
+<p><br> <strong>En este paso se transforma los títulos de las columnas a minusculas</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(eliminacion_Celda_vacia) <span class="ot">&lt;-</span> <span class="fu">tolower</span>(<span class="fu">colnames</span>(eliminacion_Celda_vacia))</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span> (eliminacion_Celda_vacia)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-382f0fbaef3f060b3410" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-382f0fbaef3f060b3410">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72"],["HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","HIDROELECTRICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","FOTOVOLTAICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","TERMICAS","EOLICAS","EOLICAS","EOLICAS"],["acp","AES Panama","AES CHANGUINOLA","ALTO VALLE   COCHEA","cafe de eleta","CALDERA ENERGY","CELSIA  ALTERNERGY","CELSIA  BONTEX","CORP. ENERGIA ISTMO","EISA  ELECTRON INVESTMENT","EMNADENSA  BUGABA  Y  TOTUMA","ENEL  FORTUNA","ELECTROGENERADORA","ESEPSA","FOUNTAIN  INTERTRADE","GENISA BARRO blanco","hIDRO BOQUERON","HIDRO ECO TERIBE","HIDRO IBERICA  EL RAILE","HIDRO PANAMA","HIDRO PIEDRA","HYDRO CAISAN  EL alto","ideal                     PANAMA","ISTMUS   CONCEPCION","PASO ANCHO","PERLAS NORTE","PERLAS SUR","PEDREGALITO","RIO CHICO","SALTOS DEL FRANCOLI  PLANETAS   y ","SAN ANDRES  DESARROLLOS  HID CORP.","SAN LORENZO","AES PANAMA SRL","AVANZALIA","AZUCARERA  NACIONAL","AZUERO VENTURE","BOQUERON","CELSIA SOLAR  PARQUE PRUDENCIA","CELSIA  DIVISA SOLAR    MW","COCLE VENTURE","CONCEPTO SOLAR","ECOSOLAR   y ","DACONAN  SOLAR","EL FRAILE SOLAR","ELECTRICIDAD SOLAR    MENDOZA","ENEL  SOLAR","FARALLON ","GENERACION SOLAR","PANAMA SOLAR  POCRf","PANAMA VENTURE","GENA  SOLAR  DON FELIX","PANASOLAR   GENERATION","PSZ    EL ESPINAL","SARIGUA   EGESA","SOLAR BUGABA","SOLAR  DEVELOPMENT","SOLPAC","TECNISOL","AES GAS NATURAL ATLANTICO","CELSIA  ALTERNEGY  CATIVA","CELSIA   BL  M","GENA","EMNADESA   TROPITERMICA","PAN AM","URBALIA","ISLAND  POWER","SPARKLE  POWER","MINERA PANAMA","ACP","NUEVO CHAGRES  AES PANAMA","UEP PENONOME  II","PARQUE  EOLICO  TOABRE"],[60,481.96,222.17,15.5,0.53,19.75,92.48999999999999,25.34,19.83,84.65000000000001,17.57,300,7.8,22.48,57.9,28.58,5.25,31.8,7.13,4.3,21.62,72.2,145,10,6.78,10,10,19.9,12.52,13.64,9.890000000000001,8.119999999999999,39.86,120,0.96,9.52,4.75,9.69,9.9,8.99,0.96,9.99,3.24,0.48,3,111.66,9.6,0.1,16,8.99,9.99,9.9,9,2.4,2.56,10,9.99,40,381,87,68,150,6.3,144,8.1,46.43,49.2,300,99.62,55,215,66],[1.51,12.1,5.58,0.39,0.01,0.5,2.32,0.64,0.5,2.13,0.44,7.53,0.2,0.5600000000000001,1.45,0.72,0.13,0.8,0.18,0.11,0.54,1.81,3.64,0.25,0.17,0.25,0.25,0.5,0.31,0.34,0.25,0.2,1,3.01,0.02,0.24,0.12,0.24,0.25,0.23,0.02,0.25,0.08,0.01,0.08,2.8,0.24,0,0.4,0.23,0.25,0.25,0.23,0.06,0.06,0.25,0.25,1,9.57,2.18,1.71,3.77,0.16,3.62,0.2,1.17,1.24,7.53,2.5,1.38,5.4,1.66],[274.29,1523.05,1057.98,75.91,1.64,99.98,372.41,87.11,93.40000000000001,514.9,72.3,1383.17,39.3,114.93,298.88,148.37,32.69,152.7,36.58,7.68,127.35,322.21,796.2,58.57,27.7,61.61,61.57,92.31999999999999,58.9,66.73,34.37,39.06,77.38,192.24,0.05,18.42,2.93,15.6,13.7,18.29,1.36,30.18,5.64,0.71,5.25,119.94,5.1,0.04,29.23,16.96,14.79,13.98,12.23,1.58,2.55,7.23,3.87,74.01000000000001,1376,102.67,0.91,57.94,0.36,453.62,20.41,103.46,103.52,70.39,155.24,82.15000000000001,385.49,116.66],[2.32,12.86,8.93,0.64,0.01,0.84,3.14,0.74,0.79,4.35,0.61,11.68,0.33,0.97,2.52,1.25,0.28,1.29,0.31,0.06,1.08,2.72,6.72,0.49,0.23,0.52,0.52,0.78,0.5,0.5600000000000001,0.29,0.33,0.65,1.62,0,0.16,0.02,0.13,0.12,0.15,0.01,0.25,0.05,0.01,0.04,1.01,0.04,0,0.25,0.14,0.12,0.12,0.1,0.01,0.02,0.06,0.03,0.62,11.62,0.87,0.01,0.49,0,3.83,0.17,0.87,0.87,0.59,1.31,0.6899999999999999,3.25,0.98],[0,306.55,175.33,3.06,0.13,3.92,80.70999999999999,23.04,3.17,57.51,3.91,289.49,1.56,7.31,19.42,11.57,0.91,22.22,1.5,0.74,3.1,22.14,51.16,2.49,3.08,2.46,2.46,2.04,0.38,4.45,2.54,1.33,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,349.89,73.23999999999999,0,142.74,2.04,135.06,0,46.43,49.2,0,75.36,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>tipo<\/th>\n      <th>id-planta<\/th>\n      <th>capacidad instalada mw<\/th>\n      <th>%ci<\/th>\n      <th>generación brutal (gwh)<\/th>\n      <th>%gb<\/th>\n      <th>capacidad firme mw<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p><br> <strong>Letras iniciales en Mayusculas</strong></p>
+<p>Se utiliza nueva libria</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(R.utils)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Se selecciona las columas que se aplicara las MAYUSCULAS al inicio de cada palabra</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>Columna_1 <span class="ot">&lt;-</span> <span class="st">"tipo"</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>Columna_2 <span class="ot">&lt;-</span> <span class="st">"id-planta"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Se transforma las palabras iniciales en MAYUSCULAS en cada celda de las columnas seleccionadas</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>eliminacion_Celda_vacia[[Columna_1]]<span class="ot">&lt;-</span> <span class="fu">tolower</span>(eliminacion_Celda_vacia[[Columna_1]])</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>eliminacion_Celda_vacia[[Columna_1]]<span class="ot">&lt;-</span> <span class="fu">capitalize</span>(eliminacion_Celda_vacia[[Columna_1]])</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>eliminacion_Celda_vacia[[Columna_2]]<span class="ot">&lt;-</span> <span class="fu">tolower</span>(eliminacion_Celda_vacia[[Columna_2]])</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>eliminacion_Celda_vacia[[Columna_2]]<span class="ot">&lt;-</span> <span class="fu">capitalize</span>(eliminacion_Celda_vacia[[Columna_2]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Se imprime el resultado</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(eliminacion_Celda_vacia)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7f899d9b1eddda078f90" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7f899d9b1eddda078f90">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72"],["Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Termicas","Termicas","Termicas","Termicas","Termicas","Termicas","Termicas","Termicas","Termicas","Termicas","Termicas","Eolicas","Eolicas","Eolicas"],["Acp","Aes panama","Aes changuinola","Alto valle   cochea","Cafe de eleta","Caldera energy","Celsia  alternergy","Celsia  bontex","Corp. energia istmo","Eisa  electron investment","Emnadensa  bugaba  y  totuma","Enel  fortuna","Electrogeneradora","Esepsa","Fountain  intertrade","Genisa barro blanco","Hidro boqueron","Hidro eco teribe","Hidro iberica  el raile","Hidro panama","Hidro piedra","Hydro caisan  el alto","Ideal                     panama","Istmus   concepcion","Paso ancho","Perlas norte","Perlas sur","Pedregalito","Rio chico","Saltos del francoli  planetas   y ","San andres  desarrollos  hid corp.","San lorenzo","Aes panama srl","Avanzalia","Azucarera  nacional","Azuero venture","Boqueron","Celsia solar  parque prudencia","Celsia  divisa solar    mw","Cocle venture","Concepto solar","Ecosolar   y ","Daconan  solar","El fraile solar","Electricidad solar    mendoza","Enel  solar","Farallon ","Generacion solar","Panama solar  pocrf","Panama venture","Gena  solar  don felix","Panasolar   generation","Psz    el espinal","Sarigua   egesa","Solar bugaba","Solar  development","Solpac","Tecnisol","Aes gas natural atlantico","Celsia  alternegy  cativa","Celsia   bl  m","Gena","Emnadesa   tropitermica","Pan am","Urbalia","Island  power","Sparkle  power","Minera panama","Acp","Nuevo chagres  aes panama","Uep penonome  ii","Parque  eolico  toabre"],[60,481.96,222.17,15.5,0.53,19.75,92.48999999999999,25.34,19.83,84.65000000000001,17.57,300,7.8,22.48,57.9,28.58,5.25,31.8,7.13,4.3,21.62,72.2,145,10,6.78,10,10,19.9,12.52,13.64,9.890000000000001,8.119999999999999,39.86,120,0.96,9.52,4.75,9.69,9.9,8.99,0.96,9.99,3.24,0.48,3,111.66,9.6,0.1,16,8.99,9.99,9.9,9,2.4,2.56,10,9.99,40,381,87,68,150,6.3,144,8.1,46.43,49.2,300,99.62,55,215,66],[1.51,12.1,5.58,0.39,0.01,0.5,2.32,0.64,0.5,2.13,0.44,7.53,0.2,0.5600000000000001,1.45,0.72,0.13,0.8,0.18,0.11,0.54,1.81,3.64,0.25,0.17,0.25,0.25,0.5,0.31,0.34,0.25,0.2,1,3.01,0.02,0.24,0.12,0.24,0.25,0.23,0.02,0.25,0.08,0.01,0.08,2.8,0.24,0,0.4,0.23,0.25,0.25,0.23,0.06,0.06,0.25,0.25,1,9.57,2.18,1.71,3.77,0.16,3.62,0.2,1.17,1.24,7.53,2.5,1.38,5.4,1.66],[274.29,1523.05,1057.98,75.91,1.64,99.98,372.41,87.11,93.40000000000001,514.9,72.3,1383.17,39.3,114.93,298.88,148.37,32.69,152.7,36.58,7.68,127.35,322.21,796.2,58.57,27.7,61.61,61.57,92.31999999999999,58.9,66.73,34.37,39.06,77.38,192.24,0.05,18.42,2.93,15.6,13.7,18.29,1.36,30.18,5.64,0.71,5.25,119.94,5.1,0.04,29.23,16.96,14.79,13.98,12.23,1.58,2.55,7.23,3.87,74.01000000000001,1376,102.67,0.91,57.94,0.36,453.62,20.41,103.46,103.52,70.39,155.24,82.15000000000001,385.49,116.66],[2.32,12.86,8.93,0.64,0.01,0.84,3.14,0.74,0.79,4.35,0.61,11.68,0.33,0.97,2.52,1.25,0.28,1.29,0.31,0.06,1.08,2.72,6.72,0.49,0.23,0.52,0.52,0.78,0.5,0.5600000000000001,0.29,0.33,0.65,1.62,0,0.16,0.02,0.13,0.12,0.15,0.01,0.25,0.05,0.01,0.04,1.01,0.04,0,0.25,0.14,0.12,0.12,0.1,0.01,0.02,0.06,0.03,0.62,11.62,0.87,0.01,0.49,0,3.83,0.17,0.87,0.87,0.59,1.31,0.6899999999999999,3.25,0.98],[0,306.55,175.33,3.06,0.13,3.92,80.70999999999999,23.04,3.17,57.51,3.91,289.49,1.56,7.31,19.42,11.57,0.91,22.22,1.5,0.74,3.1,22.14,51.16,2.49,3.08,2.46,2.46,2.04,0.38,4.45,2.54,1.33,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,349.89,73.23999999999999,0,142.74,2.04,135.06,0,46.43,49.2,0,75.36,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>tipo<\/th>\n      <th>id-planta<\/th>\n      <th>capacidad instalada mw<\/th>\n      <th>%ci<\/th>\n      <th>generación brutal (gwh)<\/th>\n      <th>%gb<\/th>\n      <th>capacidad firme mw<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p><br> <strong>Variables que son numéricas</strong></p>
+<p>En este paso se hace el llamado a todas las tablas, donde se seleccionan las tablas que contienen valores numéricos</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>colum_numericas <span class="ot">&lt;-</span> <span class="fu">sapply</span>(eliminacion_Celda_vacia, <span class="cf">function</span>(col)<span class="fu">all</span>(<span class="fu">is.numeric</span>(col)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Se selecciona las columnas obtenidas en el paso anterior y se muestran las celdas de cada columna</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>val_numericos <span class="ot">&lt;-</span> eliminacion_Celda_vacia[, colum_numericas]</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(val_numericos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7f3e10e3503eb8675cdc" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7f3e10e3503eb8675cdc">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72"],[60,481.96,222.17,15.5,0.53,19.75,92.48999999999999,25.34,19.83,84.65000000000001,17.57,300,7.8,22.48,57.9,28.58,5.25,31.8,7.13,4.3,21.62,72.2,145,10,6.78,10,10,19.9,12.52,13.64,9.890000000000001,8.119999999999999,39.86,120,0.96,9.52,4.75,9.69,9.9,8.99,0.96,9.99,3.24,0.48,3,111.66,9.6,0.1,16,8.99,9.99,9.9,9,2.4,2.56,10,9.99,40,381,87,68,150,6.3,144,8.1,46.43,49.2,300,99.62,55,215,66],[1.51,12.1,5.58,0.39,0.01,0.5,2.32,0.64,0.5,2.13,0.44,7.53,0.2,0.5600000000000001,1.45,0.72,0.13,0.8,0.18,0.11,0.54,1.81,3.64,0.25,0.17,0.25,0.25,0.5,0.31,0.34,0.25,0.2,1,3.01,0.02,0.24,0.12,0.24,0.25,0.23,0.02,0.25,0.08,0.01,0.08,2.8,0.24,0,0.4,0.23,0.25,0.25,0.23,0.06,0.06,0.25,0.25,1,9.57,2.18,1.71,3.77,0.16,3.62,0.2,1.17,1.24,7.53,2.5,1.38,5.4,1.66],[274.29,1523.05,1057.98,75.91,1.64,99.98,372.41,87.11,93.40000000000001,514.9,72.3,1383.17,39.3,114.93,298.88,148.37,32.69,152.7,36.58,7.68,127.35,322.21,796.2,58.57,27.7,61.61,61.57,92.31999999999999,58.9,66.73,34.37,39.06,77.38,192.24,0.05,18.42,2.93,15.6,13.7,18.29,1.36,30.18,5.64,0.71,5.25,119.94,5.1,0.04,29.23,16.96,14.79,13.98,12.23,1.58,2.55,7.23,3.87,74.01000000000001,1376,102.67,0.91,57.94,0.36,453.62,20.41,103.46,103.52,70.39,155.24,82.15000000000001,385.49,116.66],[2.32,12.86,8.93,0.64,0.01,0.84,3.14,0.74,0.79,4.35,0.61,11.68,0.33,0.97,2.52,1.25,0.28,1.29,0.31,0.06,1.08,2.72,6.72,0.49,0.23,0.52,0.52,0.78,0.5,0.5600000000000001,0.29,0.33,0.65,1.62,0,0.16,0.02,0.13,0.12,0.15,0.01,0.25,0.05,0.01,0.04,1.01,0.04,0,0.25,0.14,0.12,0.12,0.1,0.01,0.02,0.06,0.03,0.62,11.62,0.87,0.01,0.49,0,3.83,0.17,0.87,0.87,0.59,1.31,0.6899999999999999,3.25,0.98],[0,306.55,175.33,3.06,0.13,3.92,80.70999999999999,23.04,3.17,57.51,3.91,289.49,1.56,7.31,19.42,11.57,0.91,22.22,1.5,0.74,3.1,22.14,51.16,2.49,3.08,2.46,2.46,2.04,0.38,4.45,2.54,1.33,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,349.89,73.23999999999999,0,142.74,2.04,135.06,0,46.43,49.2,0,75.36,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>capacidad instalada mw<\/th>\n      <th>%ci<\/th>\n      <th>generación brutal (gwh)<\/th>\n      <th>%gb<\/th>\n      <th>capacidad firme mw<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p><br> <strong>Se eliminan las columnas con porcentaje</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>eliminacion_Celda_vacia <span class="ot">&lt;-</span> eliminacion_Celda_vacia[, <span class="sc">!</span><span class="fu">colnames</span>(eliminacion_Celda_vacia) <span class="sc">%in%</span> <span class="st">"%gb"</span>]</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>eliminacion_Celda_vacia <span class="ot">&lt;-</span> eliminacion_Celda_vacia[, <span class="sc">!</span><span class="fu">colnames</span>(eliminacion_Celda_vacia) <span class="sc">%in%</span> <span class="st">"%ci"</span>]</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(eliminacion_Celda_vacia)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-a2c0d44cf5c432fae0a0" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-a2c0d44cf5c432fae0a0">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72"],["Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Hidroelectricas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Fotovoltaicas","Termicas","Termicas","Termicas","Termicas","Termicas","Termicas","Termicas","Termicas","Termicas","Termicas","Termicas","Eolicas","Eolicas","Eolicas"],["Acp","Aes panama","Aes changuinola","Alto valle   cochea","Cafe de eleta","Caldera energy","Celsia  alternergy","Celsia  bontex","Corp. energia istmo","Eisa  electron investment","Emnadensa  bugaba  y  totuma","Enel  fortuna","Electrogeneradora","Esepsa","Fountain  intertrade","Genisa barro blanco","Hidro boqueron","Hidro eco teribe","Hidro iberica  el raile","Hidro panama","Hidro piedra","Hydro caisan  el alto","Ideal                     panama","Istmus   concepcion","Paso ancho","Perlas norte","Perlas sur","Pedregalito","Rio chico","Saltos del francoli  planetas   y ","San andres  desarrollos  hid corp.","San lorenzo","Aes panama srl","Avanzalia","Azucarera  nacional","Azuero venture","Boqueron","Celsia solar  parque prudencia","Celsia  divisa solar    mw","Cocle venture","Concepto solar","Ecosolar   y ","Daconan  solar","El fraile solar","Electricidad solar    mendoza","Enel  solar","Farallon ","Generacion solar","Panama solar  pocrf","Panama venture","Gena  solar  don felix","Panasolar   generation","Psz    el espinal","Sarigua   egesa","Solar bugaba","Solar  development","Solpac","Tecnisol","Aes gas natural atlantico","Celsia  alternegy  cativa","Celsia   bl  m","Gena","Emnadesa   tropitermica","Pan am","Urbalia","Island  power","Sparkle  power","Minera panama","Acp","Nuevo chagres  aes panama","Uep penonome  ii","Parque  eolico  toabre"],[60,481.96,222.17,15.5,0.53,19.75,92.48999999999999,25.34,19.83,84.65000000000001,17.57,300,7.8,22.48,57.9,28.58,5.25,31.8,7.13,4.3,21.62,72.2,145,10,6.78,10,10,19.9,12.52,13.64,9.890000000000001,8.119999999999999,39.86,120,0.96,9.52,4.75,9.69,9.9,8.99,0.96,9.99,3.24,0.48,3,111.66,9.6,0.1,16,8.99,9.99,9.9,9,2.4,2.56,10,9.99,40,381,87,68,150,6.3,144,8.1,46.43,49.2,300,99.62,55,215,66],[274.29,1523.05,1057.98,75.91,1.64,99.98,372.41,87.11,93.40000000000001,514.9,72.3,1383.17,39.3,114.93,298.88,148.37,32.69,152.7,36.58,7.68,127.35,322.21,796.2,58.57,27.7,61.61,61.57,92.31999999999999,58.9,66.73,34.37,39.06,77.38,192.24,0.05,18.42,2.93,15.6,13.7,18.29,1.36,30.18,5.64,0.71,5.25,119.94,5.1,0.04,29.23,16.96,14.79,13.98,12.23,1.58,2.55,7.23,3.87,74.01000000000001,1376,102.67,0.91,57.94,0.36,453.62,20.41,103.46,103.52,70.39,155.24,82.15000000000001,385.49,116.66],[0,306.55,175.33,3.06,0.13,3.92,80.70999999999999,23.04,3.17,57.51,3.91,289.49,1.56,7.31,19.42,11.57,0.91,22.22,1.5,0.74,3.1,22.14,51.16,2.49,3.08,2.46,2.46,2.04,0.38,4.45,2.54,1.33,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,349.89,73.23999999999999,0,142.74,2.04,135.06,0,46.43,49.2,0,75.36,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>tipo<\/th>\n      <th>id-planta<\/th>\n      <th>capacidad instalada mw<\/th>\n      <th>generación brutal (gwh)<\/th>\n      <th>capacidad firme mw<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
