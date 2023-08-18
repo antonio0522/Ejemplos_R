@@ -97,6 +97,30 @@ palabra <- "Univesidad de Panama"
 str_sub(string = palabra, start = 5, end = 13)
 ```
 
+### Ejemplo 5 (Utilización de librerias palmerpenguins y ggthemes)
+
+Luego de haber instalado las lobrerias se procede a llamarlas
+
+```{r}
+library(palmerpenguins)
+library(ggthemes)
+```
+
+En este ejemplo se trata de mostrar la diferencia que tiene la funcion de color, con fill.
+
+Aquí logramos observar que si utilizamos función de color nos resalta todo el volumen de las barras y si utilizamos la función de fill se resalta el borde de las barras.
+
+```{r}
+ggplot(penguins, aes(x = species)) +
+  geom_bar(color = "red")
+```
+
+
+```{r}
+ggplot(penguins, aes(x = species)) +
+  geom_bar(fill = "red")
+```
+
 ### Asignacion 1 (Manipular dataframes y hacer operaciones)
 
 ```{r, message=FALSE}
@@ -114,6 +138,7 @@ datatable(Plantas_datos<-read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejem
 
 datatable(Tipo_energia<-read_xlsx("C:\\Users\\anton\\OneDrive\\Documentos\\Ejemplos_R\\datos_asignacion_2_data_2.xlsx"))
 ```
+
 Operaciones realizadas utilizando la columna A
 
 ```{r}
