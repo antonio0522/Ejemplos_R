@@ -2,22 +2,8 @@
 title: "Semana 4"
 ---
 
-### Asignación 1 (Unión de archivos xlsx)
+### Ejemplo 1
 
-```{r, message=FALSE}
-library(mergeFiles)
-library(stringr)
-library(readxl)
-library(DT)
-library(dplyr)
-```
+### Ejemplo 2
 
-```{r}
-Documento_completo <- merge_files(path = "C:/Users/anton/OneDrive/Documentos/Ejemplos_R/ofertas",extension = "xlsx")
-```
-
-```{r}
-indice <- which(Documento_completo$planta == "A C P")
-Documento_completo$planta[indice] <- "ACP"
-datatable(Documento_completo)
-```
+### Ejemplo 3
