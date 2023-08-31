@@ -1,0 +1,51 @@
+---
+title: "Semana 5"
+---
+
+### Librerías a utilizar
+
+```{r, message=FALSE}
+library(mergeFiles)
+library(DT)
+library(dplyr)
+library(stringi)
+```
+
+### Se selecciona la carpeta donde están los archivos que vamos a leer y se procede a colocar el formato (xlsx) de los mismos
+
+```{r}
+Total_doc_completo <- merge_files(path = "C:/Users/anton/OneDrive/Documentos/Ejemplos_R/Archivo_doc_completo",extension = "xlsx", tag = "relative", tag_sheet = "show")
+```
+
+### Se transforman las palabras y letras que están en mayúsculas a minúsculas.
+
+```{r}
+Total_doc_completo<- lapply(Total_doc_completo, tolower) %>% data.frame()
+datatable(Total_doc_completo)
+```
+
+### Se eliminan las tildes de todo el documento
+
+```{r}
+Total_doc_completo <- lapply(Total_doc_completo, function(x){
+ return(iconv (x, to = "ASCII//TRANSLIT"))
+})  %>% data.frame()
+datatable(Total_doc_completo)
+```
+
+### Eliminación de los espacios
+
+```{r}
+cambiar_espacios <- lapply(Total_doc_completo$planta, function(x) gsub("\\s+", "_", x))
+Total_doc_completo$planta <- cambiar_espacios
+datatable(Total_doc_completo)
+```
+
+```{r}
+
+#lapply(head(Total_doc_completo$planta), function(x) x) %>% table()
+
+count(Total_doc_completo,planta) %>%
+  datatable()
+
+```

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ejemplos_R - Mes de Agosto</title>
+<title>Ejemplos_R - Semana 4</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -59,6 +93,16 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+
+<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.29/datatables.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -105,11 +149,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#semana-1" id="toc-semana-1" class="nav-link active" data-scroll-target="#semana-1">Semana 1</a></li>
-  <li><a href="#semana-2" id="toc-semana-2" class="nav-link" data-scroll-target="#semana-2">Semana 2</a></li>
-  <li><a href="#semana-3" id="toc-semana-3" class="nav-link" data-scroll-target="#semana-3">Semana 3</a></li>
-  <li><a href="#semana-4" id="toc-semana-4" class="nav-link" data-scroll-target="#semana-4">Semana 4</a></li>
-  <li><a href="#semana-5" id="toc-semana-5" class="nav-link" data-scroll-target="#semana-5">Semana 5</a></li>
+  <li><a href="#asignación-1-unión-de-archivos-xlsx" id="toc-asignación-1-unión-de-archivos-xlsx" class="nav-link active" data-scroll-target="#asignación-1-unión-de-archivos-xlsx">Asignación 1 (Unión de archivos xlsx)</a></li>
   </ul>
 </nav>
     </div>
@@ -118,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Mes de Agosto</h1>
+<h1 class="title">Semana 4</h1>
 </div>
 
 
@@ -133,20 +173,73 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="semana-1" class="level2">
-<h2 class="anchored" data-anchor-id="semana-1"><a href="./Semana_1_mes_1.html">Semana 1</a></h2>
-</section>
-<section id="semana-2" class="level2">
-<h2 class="anchored" data-anchor-id="semana-2"><a href="./Semana_2_mes_1.html">Semana 2</a></h2>
-</section>
-<section id="semana-3" class="level2">
-<h2 class="anchored" data-anchor-id="semana-3"><a href="./Semana_3_mes_1.html">Semana 3</a></h2>
-</section>
-<section id="semana-4" class="level2">
-<h2 class="anchored" data-anchor-id="semana-4"><a href="./Semana_4_mes_1.html">Semana 4</a></h2>
-</section>
-<section id="semana-5" class="level2">
-<h2 class="anchored" data-anchor-id="semana-5"><a href="./Semana_5_mes_1.html">Semana 5</a></h2>
+<section id="asignación-1-unión-de-archivos-xlsx" class="level3">
+<h3 class="anchored" data-anchor-id="asignación-1-unión-de-archivos-xlsx">Asignación 1 (Unión de archivos xlsx)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mergeFiles)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Documento_completo <span class="ot">&lt;-</span> <span class="fu">merge_files</span>(<span class="at">path =</span> <span class="st">"C:/Users/anton/OneDrive/Documentos/Ejemplos_R/ofertas"</span>,<span class="at">extension =</span> <span class="st">"xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: magrittr</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Path: C:/Users/anton/OneDrive/Documentos/Ejemplos_R/ofertas</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Files: 6</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>oferta-2017.xlsx:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code> - sheet: 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>oferta-2018.xlsx:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code> - sheet: 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>oferta-2019.xlsx:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code> - sheet: 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>oferta-2020.xlsx:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code> - sheet: 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>oferta-2021.xlsx:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code> - sheet: 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>oferta-2022.xlsx:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code> - sheet: 1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>indice <span class="ot">&lt;-</span> <span class="fu">which</span>(Documento_completo<span class="sc">$</span>planta <span class="sc">==</span> <span class="st">"A C P"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>Documento_completo<span class="sc">$</span>planta[indice] <span class="ot">&lt;-</span> <span class="st">"ACP"</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(Documento_completo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ac9797b931e73592f734" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ac9797b931e73592f734">{"x":{"filter":"none","vertical":false,"data":[[],[]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>planta<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 
 
 </section>
