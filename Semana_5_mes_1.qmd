@@ -9,7 +9,7 @@ title: "Semana 5"
 ### Ejemplo 3
 
 
-### Librerías a utilizar
+### Asignación final mes de Agosto
 
 ```{r, message=FALSE}
 library(mergeFiles)
