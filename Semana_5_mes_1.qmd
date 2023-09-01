@@ -18,20 +18,20 @@ library(dplyr)
 library(stringi)
 ```
 
-<br> ***Se selecciona la carpeta donde están los archivos que vamos a leer y se procede a colocar el formato (xlsx) de los mismos, por otra parte se crea la columna de sheet.***
+<br> **Se selecciona la carpeta donde están los archivos que vamos a leer y se procede a colocar el formato (xlsx) de los mismos, por otra parte se crea la columna de sheet.**
 
 ```{r, message=FALSE}
 Total_doc_completo <- merge_files(path = "C:/Users/anton/OneDrive/Documentos/Ejemplos_R/Archivo_doc_completo",extension = "xlsx", tag = "relative", tag_sheet = "show")
 ```
 
-<br> ***Se transforman las palabras y letras que están en mayúsculas a minúsculas.***
+<br> **Se transforman las palabras y letras que están en mayúsculas a minúsculas.**
 
 ```{r}
 Total_doc_completo<- lapply(Total_doc_completo, tolower) %>% data.frame()
 datatable(Total_doc_completo)
 ```
 
-<br> ***Se eliminan las tildes de todo el documento***
+<br> **Se eliminan las tildes de todo el documento**
 
 ```{r}
 Total_doc_completo <- lapply(Total_doc_completo, function(x){
@@ -40,7 +40,7 @@ Total_doc_completo <- lapply(Total_doc_completo, function(x){
 datatable(Total_doc_completo)
 ```
 
-<br> ***Se eliminación de los espacios en blanco y se remplazan por (_)***
+<br> **Se eliminación de los espacios en blanco y se remplazan por (_)**
 
 ```{r}
 cambiar_espacios <- lapply(Total_doc_completo$planta, function(x) gsub("\\s+", "_", x))
@@ -48,7 +48,7 @@ Total_doc_completo$planta <- cambiar_espacios
 datatable(Total_doc_completo)
 ```
 
-<br> ***Aqui se muestra la cantidad de veces que se repiten los nombres en la columna planta***
+<br> **Aqui se muestra la cantidad de veces que se repiten los nombres en la columna planta**
 
 ```{r}
 count(Total_doc_completo,planta) %>%
